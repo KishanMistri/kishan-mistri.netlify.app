@@ -23,30 +23,30 @@ date_format: Jan 2006
 #   Leave other parameters empty if not required.
 #   Begin multi-line descriptions with YAML's `|2-` multi-line prefix.
 item:
-- certificate_url: https://www.coursera.org
-  date_end: ""
-  date_start: "2021-01-25"
+- certificate_url: https://www.credly.com/badges/c42a8d67-8ef4-46f9-bfaf-706840820e76
+  date_end: "2024-06-20"
+  date_start: "2021-06-21"
   description: ""
-  organization: Coursera
-  organization_url: https://www.coursera.org
-  title: Neural Networks and Deep Learning
-  url: ""
-- certificate_url: https://www.edx.org
-  date_end: ""
-  date_start: "2021-01-01"
-  description: Formulated informed blockchain models, hypotheses, and use cases.
-  organization: edX
-  organization_url: https://www.edx.org
-  title: Blockchain Fundamentals
-  url: https://www.edx.org/professional-certificate/uc-berkeleyx-blockchain-fundamentals
-- certificate_url: https://www.datacamp.com
-  date_end: "2020-12-21"
-  date_start: "2020-07-01"
+  organization: 'Amazon Web Services'
+  organization_url: https://aws.amazon.com/certification/certified-solutions-architect-associate/
+  title: 'AWS Certified Solutions Architect – Associate'
+  url: "https://aws.amazon.com/certification/certified-solutions-architect-associate/"
+- certificate_url: https://www.credly.com/badges/75a49f98-967e-441e-89e6-b825f1bacd9a
+  date_end: "2023-12-27"
+  date_start: "2020-12-28"
   description: ""
-  organization: DataCamp
-  organization_url: https://www.datacamp.com
-  title: 'Object-Oriented Programming in R'
-  url: ""
+  organization: Splunk
+  organization_url: https://www.credly.com/org/splunk
+  title: Splunk Enterprise Certified Admin
+  url: "https://www.splunk.com/en_us/training/certification-track/splunk-enterprise-certified-admin.html"
+- certificate_url: https://www.credly.com/badges/75a49f98-967e-441e-89e6-b825f1bacd9a
+  date_end: "2023-02-11"
+  date_start: "2021-02-12"
+  description: ""
+  organization: 'HashiCorp'
+  organization_url: https://www.hashicorp.com/
+  title: 'HashiCorp Certified: Terraform Associate'
+  url: "https://www.hashicorp.com/certification/terraform-associate"
 
 design:
   columns: '2' 
