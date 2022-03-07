@@ -1,18 +1,11 @@
-# Theme metadata
+# Font style metadata
 name = "Rose"
 
-# Is theme light or dark?
-light = true
+# Optional Google font URL
+google_fonts = "family=Cutive+Mono&family=Lora:wght@400;700&family=Roboto:wght@400;700&display=swap"
 
-# Primary
-primary = "rgb(251, 191, 183)"
-
-# Menu
-menu_primary = "rgb(247, 247, 247)"
-menu_text = "#000"
-menu_text_active = "rgb(25, 25, 25)"
-menu_title = "#000"
-
-# Home sections
-home_section_odd = "#FFF"
-home_section_even = "rgb(234, 242, 250)"
+# Font families
+heading_font = "Lora"
+body_font = "Roboto"
+nav_font = "Lora"
+mono_font = "Cutive Mono"
