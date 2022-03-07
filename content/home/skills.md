@@ -16,34 +16,35 @@ subtitle:
 # - Add/remove as many `feature` blocks below as you like.
 # - For available icons, see: https://wowchemy.com/docs/page-builder/#icons
 feature:
-- description:
-  icon: r-project
-  icon_pack: fab
-  name: Python
-- description: 
-  icon: chart-line
+- icon: "python"
+  icon_pack: "fab"
+  name: "Python"
+  description: "Numpy, Pandas, Matplotlib, Seaborn, Scikit-learn"
+  
+- icon: chart-line
   icon_pack: fas
   name: Statistics
-- description: 
-  icon: camera-retro
+  description: "Stats & Plotting"
+
+- icon: camera-retro
   icon_pack: fas
-  name: Machine-Learning
-- description: 
-  icon: camera-retro
+  name: "Machine-Learning"
+  description: 
+  
+- icon: "database"
+  icon_pack: "fas"
+  name: "Database"
+  description: "DBMS, SQL"
+
+- icon: camera-retro
   icon_pack: fas
-  name: Machine-Learning1
-- description: 
-  icon: camera-retro
+  name: System Design & DevOps
+  description: Designing & deploying automated solution on Cloud Provider Primarily on AWS
+
+- icon: camera-retro
   icon_pack: fas
-  name: Machine-Learning2
-- description: 
-  icon: camera-retro
-  icon_pack: fas
-  name: Machine-Learning3
-- description: 
-  icon: camera-retro
-  icon_pack: fas
-  name: Machine-Learning4
+  name: System Design & DevOps
+  description: Designing & deploying automated solution on Cloud Provider Primarily on AWS
 
 
 # Uncomment to use emoji icons.
