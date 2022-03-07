@@ -44,6 +44,7 @@ content:
   contact_links:
      - icon: linkedin
        icon_pack: fab
+       name: Let's have a conversation
        link: https://www.linkedin.com/in/kishan-mistri/
 #    - icon: twitter
 #      icon_pack: fab
