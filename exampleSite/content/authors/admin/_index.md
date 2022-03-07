@@ -10,11 +10,11 @@ role: Senior Member of Technical Staff
 
 # Organizations/Affiliations to show in About widget
 organizations:
-- name: Stanford University
-  url: https://www.stanford.edu/
+- name: Oracle India Pvt Ltd
+  url: https://www.oracle.com/in/corporate/
 
 # Short bio (displayed in user profile at end of posts)
-bio: My research interests include distributed robotics, mobile computing and programmable matter.
+bio: My interests include day to day data science problem, deploying, scaling and managing ML model/system and other programmable matter.
 
 # Interests to show in About widget
 interests:
