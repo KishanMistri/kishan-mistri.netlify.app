@@ -64,7 +64,7 @@ features:
       - r
       - latex
   math:
-    enable: false
+    enable: true
   diagram:
     enable: false
   privacy_pack:
@@ -84,6 +84,10 @@ features:
     commento:
       url: ''
   search:
+  # Search provider:
+  #   0: No search engine
+  #   1: Academic (built-in)
+  #   2: Algolia (https://www.algolia.com)
     provider: wowchemy
     algolia:
       app_id: ''
