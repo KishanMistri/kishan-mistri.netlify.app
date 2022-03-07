@@ -73,4 +73,4 @@ Talking about Personal Stuffs:
 🚀 I’m currently working on few projects in parallel. [Stay Tuned..!]
 💬 Ask me about anything, I am happy to help.
 
-{{< icon name="download" pack="fas" >}} Download my {{< staticref "uploads/resume.pdf" "newtab" >}}resumé{{< /staticref >}}.
+{{< icon name="download" pack="fas" >}} Download my {{< staticref "uploads/kmistri-cv.pdf" "newtab" >}}resumé{{< /staticref >}}.
