@@ -31,10 +31,12 @@ experience:
     date_end: '2022-01-21'
     description: |2-
         Responsibilities include:
-        
-        * Analysing
-        * Modelling
-        * Deploying
+        * Team: Data Safe - DevOps Engineer
+        * New Region Deployment
+        * Integrating Datasafe features in Terraform codebase
+        * Creating & Update deployment pipelines based on requirements
+        * Optimizing metrics and dashboarding
+        * Patching and maintaining configurations specification
         
   - title: Senior Site Reliability Engineer
     company: Crest Data Systems
