@@ -41,7 +41,7 @@ experience:
   - title: Senior Site Reliability Engineer
     company: Crest Data Systems
     company_url: 'https://www.crestdatasys.com/'
-    company_logo: org-crest
+    company_logo: org-x
     location: Ahmedabad
     date_start: '2018-06-01'
     date_end: '2021-09-30'
