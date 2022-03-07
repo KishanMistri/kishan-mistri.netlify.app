@@ -46,6 +46,19 @@ experience:
     date_start: '2018-06-01'
     date_end: '2021-09-30'
     description: Worked as DevOps and Site Reliability Engineer
+    
+  - title: Creative Head
+    company: IEEE - Student Branch, Nirma University
+    company_url: 'https://students.ieee.org/student-branch-officer-responsibilities-and-administration/'
+    company_logo: org-x
+    location: Ahmedabad
+    date_start: '2016-11-01'
+    date_end: '2017-12-01'
+    description: 
+    
+    
+      
+    
 
 design:
   columns: '2'
