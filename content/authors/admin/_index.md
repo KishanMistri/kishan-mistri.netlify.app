@@ -70,7 +70,9 @@ When he indulges into new component of tech, he tries to absorb concepts and its
 Talking about Personal Stuffs:
 
 👨🏻‍💻 I’m currently working on myself to achieve the milestone of successful transitioning to ML and Data Science.
+
 🚀 I’m currently working on few projects in parallel. [Stay Tuned..!]
+
 💬 Ask me about anything, I am happy to help.
 
 {{< icon name="download" pack="fas" >}} Download my {{< staticref "uploads/resume-kmistri.pdf" "newtab" >}}resume{{< /staticref >}}.
