@@ -10,7 +10,7 @@ headless: true
 weight: 80
 
 # Activate this widget? true/false
-active = true  
+active: false  
 
 title: Featured Publications
 subtitle: ""
