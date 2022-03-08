@@ -66,6 +66,7 @@ Kishan Mistri is an experienced DevOps Engineer at Oracle, India with 4+ years o
 He is a self-motivated, self-taught, and easygoing person fascinated by technology trends. When he indulges into new component of tech, he tries to absorb concepts and its application in real life. When it comes to framework, he tries to get the most out of it by creating pet project. He likes to continue learning by doing and integrating side projects for solving a problem. 
 
 Talking about Personal Stuffs:
+
 👨🏻‍💻 I’m currently working on myself to achieve the milestone of successful transitioning to ML and Data Science.
 
 🚀 I’m currently working on few projects in parallel. [Stay Tuned..!]
