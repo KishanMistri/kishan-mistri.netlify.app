@@ -23,7 +23,7 @@ content:
     netlify:
       # Enable CAPTCHA challenge to reduce spam?
       captcha: true
-
+  
   # Contact details (edit or remove options as required)
   email: kishan.mistri.111@gmail.com
 #  phone: 888 888 88 88
@@ -33,6 +33,11 @@ content:
     postcode: '382424'
     country: India
     country_code: IN
+  features:
+    map:
+      provider: 'mapnik'
+      api_key: ''
+      zoom: 15
   coordinates:
     latitude: '23.0338'
     longitude: '72.5850'
