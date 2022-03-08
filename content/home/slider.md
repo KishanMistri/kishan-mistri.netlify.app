@@ -1,21 +1,22 @@
+---
 widget: slider  # Use the Slider widget as this page section
-weight: 1  # Position of this section on the page
+weight: 10  # Position of this section on the page
 active: true  # Publish this section?
 headless: true  # This file represents a page section.
 
 design:
   # Slide height is automatic unless you force a specific height (e.g. '400px')
-  slide_height: ''
+  slide_height: '250px'
   is_fullscreen: true
   # Automatically transition through slides?
-  loop: false
+  loop: true
   # Duration of transition between slides (in ms)
   interval: 2000
 
 content:
   slides:
-    - title: 👋 Welcome to the group
-      content: Take a look at what we're working on...
+    - title: 👋 Hey. This site is under maintainance.!
+      content: Take a look at what I am working on...
       align: center
       background:
         position: right
@@ -30,8 +31,8 @@ content:
         color: '#555'
         brightness: 0.7
         media: contact.jpg
-    - title: World-Class Semiconductor Lab
-      content: 'Just opened last month!'
+    - title: World-Class Algo checking and maintaining
+      content: 'Let me know if you have any questions!'
       align: right
       background:
         position: center
@@ -43,3 +44,5 @@ content:
         icon_pack: fas
         text: Join Us
         url: ../contact/
+
+---
