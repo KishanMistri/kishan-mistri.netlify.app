@@ -37,13 +37,13 @@ education:
 #   For an email link, use "fas" icon pack, "envelope" icon, and a link in the
 #   form "mailto:your-email@example.com" or "/#contact" for contact widget.
 social:
-- icon: envelope
+- icon: circle-envelope
   icon_pack: fas
   link: '/#contact'
 - icon: github
   icon_pack: fab
   link: https://github.com/KishanMistri
-- icon: linkedin
+- icon: linkedin-in
   icon_pack: fab
   link: https://www.linkedin.com/in/kishan-mistri/
   display:
@@ -52,7 +52,7 @@ social:
 # Link to a PDF of your resume/CV from the About widget.
 # To use: copy your resume to `static/uploads/kmistri-cv.pdf`, enable `ai` icons in `params.toml`,
 # and uncomment the lines below.
-- icon: cv
+- icon: google-drive
   icon_pack: ai
   link: uploads/kmistri-cv.pdf
 
@@ -62,13 +62,10 @@ email: "kishan.mistri.111@gmail.com"
 # Highlight the author in author lists? (true/false)
 highlight_name: true
 ---
-
-Kishan is a self-motivated, self-taught, and easygoing person fascinated by technology trends. He is very exciting to be doing the next project to apply and to experiment with things he learnt.
-
-When he indulges into new component of tech, he tries to absorb concepts and its application in real life. When it comes to framework, he tries to get the most out of it by creating pet project. He likes to continue learning by doing and integrating side projects for solving a problem. He started his journey with Crest Data Systems (Ahmedabad, India) and then switched to Oracle India Pvt Ltd (Bangalore, India) for further growth. In essence, his passion and joy along the journey was driving force for what he is now. He is currently learning AI & ML and growing further.
+Kishan Mistri is an experienced DevOps Engineer at Oracle, India with 4+ years of professional experience in the Big Data Analytics technological setting. His experience route includes various mix of working as SRE , Consultant, Splunk Admin to DevOps Engineer and automating system processes. He is currently working on his transition to Data Science problem domain. 
+He is a self-motivated, self-taught, and easygoing person fascinated by technology trends. When he indulges into new component of tech, he tries to absorb concepts and its application in real life. When it comes to framework, he tries to get the most out of it by creating pet project. He likes to continue learning by doing and integrating side projects for solving a problem. 
 
 Talking about Personal Stuffs:
-
 👨🏻‍💻 I’m currently working on myself to achieve the milestone of successful transitioning to ML and Data Science.
 
 🚀 I’m currently working on few projects in parallel. [Stay Tuned..!]
