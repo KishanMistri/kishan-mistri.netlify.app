@@ -22,7 +22,7 @@ content:
         position: right
         color: '#666'
         brightness: 0.7
-        media: coders.jpg
+        media: slider-frame1.jpg
     - title: Lunch & Learn ☕️
       content: 'Share your knowledge with the group and explore exciting new topics together!'
       align: left
@@ -30,7 +30,7 @@ content:
         position: center
         color: '#555'
         brightness: 0.7
-        media: contact.jpg
+        media: slider-frame2.jpg
     - title: World-Class Algo checking and maintaining
       content: 'Let me know if you have any questions!'
       align: right
@@ -38,7 +38,7 @@ content:
         position: center
         color: '#333'
         brightness: 0.5
-        media: welcome.jpg
+        media: slider-frame3.jpg
       link:
         icon: graduation-cap
         icon_pack: fas
