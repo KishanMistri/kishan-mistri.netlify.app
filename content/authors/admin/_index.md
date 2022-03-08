@@ -14,7 +14,7 @@ organizations:
   url: https://www.oracle.com/in/corporate/
 
 # Short bio (displayed in user profile at end of posts)
-bio: My interests include day to day data science problem, deploying, scaling and managing ML model/system and other programmable matter.
+bio: My interests include solve day to day data science problems, deploying, scaling and managing ML model/system and other programmable matter.
 
 # Interests to show in About widget
 interests:
@@ -63,9 +63,9 @@ email: "kishan.mistri.111@gmail.com"
 highlight_name: true
 ---
 
-Kishan is a self-motivated, self-taught, and easygoing person fascinated by technological trends & big ideas & exciting to be doing the next project to apply and to experiment with things he learnt.
+Kishan is a self-motivated, self-taught, and easygoing person fascinated by technology trends. He is very exciting to be doing the next project to apply and to experiment with things he learnt.
 
-When he indulges into new stream of tech, he tries to absorb mostly used concepts and its application in real life. When it is for framework, he tries to get the most out of it by reading documentation along with pet project of expermentation. He likes to continue learning by doing side projects for solving a problem by using that technology. He has been started his journey with Crest Data Systems (Ahmedabad, India) and then switched to Oracle India Pvt Ltd (Bangalore, India) for further growth. In essence, his passion and joy along the journey brought him to industry. He is currently learning AI & ML and growing further. Thanks for reading Kmistri's intro.
+When he indulges into new component of tech, he tries to absorb concepts and its application in real life. When it comes to framework, he tries to get the most out of it by creating pet project. He likes to continue learning by doing and integrating side projects for solving a problem. He started his journey with Crest Data Systems (Ahmedabad, India) and then switched to Oracle India Pvt Ltd (Bangalore, India) for further growth. In essence, his passion and joy along the journey was driving force for what he is now. He is currently learning AI & ML and growing further.
 
 Talking about Personal Stuffs:
 
@@ -73,4 +73,4 @@ Talking about Personal Stuffs:
 🚀 I’m currently working on few projects in parallel. [Stay Tuned..!]
 💬 Ask me about anything, I am happy to help.
 
-{{< icon name="download" pack="fas" >}} Download my {{< staticref "uploads/kmistri-cv.pdf" "newtab" >}}resumé{{< /staticref >}}.
+{{< icon name="download" pack="fas" >}} Download my {{< staticref "uploads/resume-kmistri.pdf" "newtab" >}}resume{{< /staticref >}}.
