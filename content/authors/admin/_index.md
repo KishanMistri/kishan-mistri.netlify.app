@@ -37,7 +37,7 @@ education:
 #   For an email link, use "fas" icon pack, "envelope" icon, and a link in the
 #   form "mailto:your-email@example.com" or "/#contact" for contact widget.
 social:
-- icon: circle-envelope
+- icon: envelope
   icon_pack: fas
   link: '/#contact'
 - icon: github
@@ -52,7 +52,7 @@ social:
 # Link to a PDF of your resume/CV from the About widget.
 # To use: copy your resume to `static/uploads/kmistri-cv.pdf`, enable `ai` icons in `params.toml`,
 # and uncomment the lines below.
-- icon: google-drive
+- icon: cv
   icon_pack: ai
   link: uploads/kmistri-cv.pdf
 
