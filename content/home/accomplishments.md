@@ -27,7 +27,7 @@ item:
   date_end: "2024-06-20"
   date_start: "2021-06-21"
   description: ""
-  organization: 'Amazon Web Services'
+  organization: AWS
   organization_url: https://aws.amazon.com/certification/certified-solutions-architect-associate/
   title: 'AWS Certified Solutions Architect – Associate'
   url: "https://aws.amazon.com/certification/certified-solutions-architect-associate/"
@@ -43,7 +43,7 @@ item:
   date_end: "2023-02-11"
   date_start: "2021-02-12"
   description: ""
-  organization: 'HashiCorp'
+  organization: HashiCorp
   organization_url: https://www.hashicorp.com/
   title: 'HashiCorp Certified: Terraform Associate'
   url: "https://www.hashicorp.com/certification/terraform-associate"
