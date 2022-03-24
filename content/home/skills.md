@@ -26,7 +26,7 @@ feature:
   name: Statistics
   description: "Stats & Plotting"
 
-- icon: camera-retro
+- icon: chart-scatter-bubble
   icon_pack: fas
   name: "Machine-Learning"
   description: 
@@ -36,15 +36,15 @@ feature:
   name: "Database"
   description: "DBMS, SQL"
 
-- icon: camera-retro
-  icon_pack: fas
+- icon: system-design-icon
+  icon_pack: custom
   name: System Design & DevOps
   description: Designing & deploying automated solution on Cloud Provider Primarily on AWS
 
 - icon: camera-retro
   icon_pack: fas
-  name: System Design & DevOps
-  description: Designing & deploying automated solution on Cloud Provider Primarily on AWS
+  name: Advanturing
+  description: 
 
 
 # Uncomment to use emoji icons.
@@ -59,6 +59,6 @@ feature:
 # For example, reference `assets/media/icons/xyz.svg` as `icon: 'xyz'`
 #- icon: "your-custom-icon-name"
 #  icon_pack: "custom"
-#  name: "Surfing"
+#  name: "RockClimbing"
 #  description: "90%"
 ---
