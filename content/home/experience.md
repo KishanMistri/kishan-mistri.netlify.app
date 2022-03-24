@@ -41,7 +41,7 @@ experience:
   - title: Senior Site Reliability Engineer
     company: Crest Data Systems
     company_url: 'https://www.crestdatasys.com/'
-    company_logo: org-x
+    company_logo: org-crest
     location: Ahmedabad
     date_start: '2018-06-01'
     date_end: '2021-09-30'
@@ -50,7 +50,7 @@ experience:
   - title: Creative Head
     company: IEEE - Student Branch, Nirma University
     company_url: 'https://students.ieee.org/student-branch-officer-responsibilities-and-administration/'
-    company_logo: org-x
+    company_logo: org-ieee
     location: Ahmedabad
     date_start: '2016-11-01'
     date_end: '2017-12-01'
