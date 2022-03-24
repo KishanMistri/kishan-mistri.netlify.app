@@ -26,8 +26,8 @@ feature:
   name: Statistics
   description: "Stats & Plotting"
 
-- icon: chart-scatter-bubble
-  icon_pack: fas
+- icon: ml
+  icon_pack: custom
   name: "Machine-Learning"
   description: 
   
@@ -36,7 +36,7 @@ feature:
   name: "Database"
   description: "DBMS, SQL"
 
-- icon: system-design-icon
+- icon: systemdesign
   icon_pack: custom
   name: System Design & DevOps
   description: Designing & deploying automated solution on Cloud Provider Primarily on AWS
