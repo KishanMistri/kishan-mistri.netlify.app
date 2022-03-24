@@ -41,8 +41,8 @@ feature:
   name: System Design & DevOps
   description: Designing & deploying automated solution on Cloud Provider Primarily on AWS
 
-- icon: person-running
-  icon_pack: fas
+- icon: person-hiking
+  icon_pack: far
   name: Trekking
   description: 
 
