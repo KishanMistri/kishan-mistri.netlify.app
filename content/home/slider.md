@@ -3,7 +3,7 @@ widget: slider
 widget_id: RECENT-POSTS
 headless: true
 weight: 10
-active: false
+active: true
 design:
   slide_height: ""
   is_fullscreen: true
