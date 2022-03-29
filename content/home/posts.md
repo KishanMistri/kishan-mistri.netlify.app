@@ -13,6 +13,8 @@ title: 'Recent Posts'
 subtitle:
 
 content:
+  # Page type to display. E.g. project.
+  page_type: post
   # Filter on criteria
   filters:
     folders:
