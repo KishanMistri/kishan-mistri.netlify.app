@@ -42,6 +42,7 @@ design:
   #   1 = List
   #   2 = Compact
   #   3 = Card
+  #   4 = Citation [Only for Publications]
   #   5 = Showcase
   view: 3
 
