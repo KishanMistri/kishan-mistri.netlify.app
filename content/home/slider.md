@@ -1,6 +1,6 @@
 ---
 widget: slider
-widget_id: RECENT-POSTS
+widget_id: slider-widget
 headless: true
 weight: 10
 active: true
