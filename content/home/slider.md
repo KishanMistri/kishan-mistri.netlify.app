@@ -3,12 +3,16 @@ widget: slider
 widget_id: RECENT-POSTS
 headless: true
 weight: 10
-active: false
+active: true
 design:
   slide_height: ""
   is_fullscreen: true
   loop: true
   interval: 3000
+  background:
+    image: slider-frame2.jpg
+    text_color_light: true
+    image_darken: 0
 content:
   slides:
     - title: 👋 Hey. This site is under maintainance.!
