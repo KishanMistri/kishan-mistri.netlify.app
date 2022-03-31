@@ -14,6 +14,7 @@ links: []
 image:
   caption: Photo by rawpixel on Unsplash
   focal_point: Smart
+  filename: https://developers.google.com/youtube/images/youtube_home_page_analytics_api.png
 url_code: ""
 ---
 
