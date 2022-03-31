@@ -9,7 +9,7 @@ summary: >-
 
 
   <https://jamesclear.com/atomic-habits>
-draft: true
+draft: false
 featured: false
 tags:
   - Book-Summary
