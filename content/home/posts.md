@@ -9,12 +9,10 @@ headless: true
 # Order that this section appears on the page.
 weight: 60
 
-title: 'Recent Posts'
+title: Recent Posts
 subtitle:
 
 content:
-  # Page type to display. E.g. project.
-  page_type: post
   # Filter on criteria
   filters:
     folders:
@@ -37,5 +35,4 @@ design:
   # Choose a view for the listings:
   view: compact
   columns: '2'
-
 ---
