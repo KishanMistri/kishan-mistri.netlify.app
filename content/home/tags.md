@@ -5,7 +5,7 @@ headless: true
 weight: 120
 title: Tag listing
 subtitle: ""
-active: false
+active: true
 content:
   taxonomy: tags
   count: 20
