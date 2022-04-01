@@ -4,7 +4,7 @@ widget_id: slider-widget
 headless: true
 weight: 1
 title: Slider
-active: true
+active: false
 design:
   slide_height: ""
   is_fullscreen: true
