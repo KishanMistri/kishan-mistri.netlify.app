@@ -20,22 +20,19 @@ bio: My interests include solve day to day data science problems, deploying, sca
 interests:
 - ML System Designs
 - Information Retrieval
-- Data Science related Projects
+- Finance Domain
+- Data Science Projects
 
 # Education to show in About widget
 education:
   courses:
   - course: Diploma in Applied Machine Learning
-    institution: University Of Hydrabad and AppliedRoots
+    institution: University Of Hyderabad and AppliedRoots
     year: 2021-22
   - course: B.Tech in Information Technology 
     institution: Institute of Technology, Nirma University
     year: 2014-18
 
-# Social/Academic Networking
-# For available icons, see: https://wowchemy.com/docs/getting-started/page-builder/#icons
-#   For an email link, use "fas" icon pack, "envelope" icon, and a link in the
-#   form "mailto:your-email@example.com" or "/#contact" for contact widget.
 social:
 - icon: envelope
   icon_pack: fas
@@ -62,16 +59,16 @@ email: "kishan.mistri.111@gmail.com"
 # Highlight the author in author lists? (true/false)
 highlight_name: true
 ---
-Kishan Mistri is an experienced DevOps Engineer at Oracle, India with 4+ years of professional experience in the Big Data technological and Data Analytics setting. His experience route includes variety of responsibilities as a SRE , a Consultant, a Splunk Admin to a DevOps Engineer and automating system processes. He is currently working on his transition to Data Science domain and doing the Post Grad Diploma in Applied Machine Learning with University of Hydrabad.
+Kishan Mistri is a skilled DevOps Engineer at Oracle, India having 4+ years of professional experience in the Big Data technological and Data Analytics setting. His experience route includes a variety of responsibilities as an SRE, a Splunk Admin and Consultant to a DevOps Engineer, and automating system processes. He is currently working on his transition to the Data Science domain and doing the Post Grad Diploma in Applied Machine Learning with the University of Hyderabad.
 
-He is a self-motivated, knowledgable (guided by the ton of people that I admire), and easygoing person fascinated by technology trends. When he indulges into new component of tech, he tries to absorb concepts and its application in real life. When it comes to framework, he tries to get the most out of it by creating pet project. He likes to continue learning by doing and integrating side projects for solving a problem.
+He is self-motivated, knowledgable (guided by the ton of people that I admire), and an easygoing person fascinated by technology trends. When he indulges in a new tool or technique, he tries to absorb concepts and their application in real life. He also tries to create or integrate a pet project. He likes to continue learning by doing and integrating side projects for solving a problem.
 
-Talking about Personal Stuffs:
+Talking about Personal Stuff:
 
-👨🏻‍💻 I’m currently working on myself to achieve the milestone of successful transitioning to ML and Data Science.
+👨🏻‍💻 I’m currently working on myself to achieve the milestone of successfully transitioning to ML and Data Science.
 
-🚀 I’m currently working on few projects in parallel. [Stay Tuned..!]
+🚀 I’m currently working on a few projects in parallel. [Stay Tuned..!]
 
-💬 Ask me about anything, I am happy to help.
+💬 I am happy to help. Ask me about anything.
 
 {{< icon name="download" pack="fas" >}} Download my {{< staticref "uploads/resume-kmistri.pdf" "newtab" >}}resume{{< /staticref >}}.
