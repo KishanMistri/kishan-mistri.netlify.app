@@ -2,17 +2,12 @@
 title: Atomic Habits - By James Clear
 subtitle: "Book Summary Series - 1 "
 date: 2022-03-29T06:51:50.806Z
-summary: >-
-  ***Note: All rights are reserved by Author. This is my opinion of important
-  pointers that I wanted to remind myself and help others if they find them
-  helpful.***
-
-
-  <https://jamesclear.com/atomic-habits>
+summary: Small changes make drastic improvements in your life. Make yourself
+  aware of how it works and you can make use of them.
 draft: false
 featured: false
 tags:
-  - Book-Summary
+  - book-summary
 image:
   filename: ""
   focal_point: Smart
@@ -24,7 +19,7 @@ image:
 
 * Compounding habit results. 1% improvement
 * setting goals is not the most important thing but the framework or the system to achieve them is more important.
-* The problem is when you only work for your goal then it feels momentarily well. So work on the process to become more happiness-yielding. Which will help you improve your life and not just until the specific goal is achieved. \[This was/is the trap I was stuck in for more than 3 years of my life].
+* The problem is that when you only work for your goal then it feels momentarily well. So work on the process to become more happiness-yielding. Which will help you improve your life and not just until the specific goal is achieved. \[This was/is the trap I was stuck in for more than 3 years of my life].
 
 #### Chapter - 2 - How does your Habit shape your identity or vice versa
 
@@ -76,7 +71,7 @@ image:
 
 **Chapter - 9 - The role of Family and Friends in Shaping your Habit**
 
-* A human way of doing things to fit in is because of the rewards like gaining admiration, status, power. We first try to fit in and then try to get to status within the group irrespective of the things done by a group.
+* A human way of doing things to fit in is because of the rewards like gaining admiration, status and power. We first try to fit in and then try to get to status within the group irrespective of the things done by a group.
 * We tend to follow the close one (Family), The many (Society/Tribe) & The Pride Ones (Goals of our own). We imitate the behavior to fit in their shoes and form ourselves like them. (Partially due to the envy of the rewards they have and you want)
 * Working in a group of people with the same goal will make a single common attribute to look up to with tribe so human behavior of sticking to tribe indirectly helps us achieve the common goal (Mostly depends on the group as the influence will drive the goals.)
 * Work with the people who are having the desired behavior you want.
@@ -138,7 +133,7 @@ image:
 **Chapter - 17 - How an Accountability Partner can change everything.**
 
 * Make is immensely dissatisfying.
-* The consequences are severe, people learn quickly. Associate the bad habit with some form of punishment to make it dissatisfying.
+* The consequences are severe and people learn quickly. Associate the bad habit with some form of punishment to make it dissatisfying.
 * Having a contract of Accountability helps us be on point. Like if we are serious but we miss the daily activity, our inner self will argue with us that it is okay (Like our Devil & Angel). And by default he(Devil) is lazy. So keeping another partner to keep accountability.
 * If you lose the battle with your inner devil, the outer Accountability partner won’t change his/her point of you because of your Lame excuse.
 * Example: Having a Gym buddy will correct your mistakes as well as you will have someone to compete with and get validation on progress made.
@@ -174,5 +169,9 @@ image:
         * *The Hard and stiff will be broken*
         * *The soft and supple will prevail*
 * The lack of self-awareness is poison and Reflection & Review are the Antidotes.
+
+***Note: All rights are reserved by Author. This is my opinion of important pointers that I wanted to remind myself and help others if they find them helpful.***
+
+<https://jamesclear.com/atomic-habits>
 
 - - -
