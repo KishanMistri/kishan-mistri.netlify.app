@@ -51,7 +51,7 @@ social:
 # and uncomment the lines below.
 - icon: cv
   icon_pack: ai
-  link: uploads/kmistri-cv.pdf
+  link: uploads/resume-kmistri.pdf
 
 # Enter email to display Gravatar (if Gravatar enabled in Config)
 email: "kishan.mistri.111@gmail.com"
