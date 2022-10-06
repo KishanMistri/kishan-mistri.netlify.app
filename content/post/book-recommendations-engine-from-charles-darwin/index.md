@@ -11,4 +11,7 @@ image:
   focal_point: Smart
   preview_only: true
 ---
-https://drive.google.com/drive/folders/1eOcy5qoN-21sv2RUgCDrk_cFIYTOFfpS?usp=sharing
+*Implementation Phase - Completed*\
+*Deployment  - Pending*
+
+\[Project Resources](<https://drive.google.com/drive/folders/1eOcy5qoN-21sv2RUgCDrk_cFIYTOFfpS?usp=sharing>)
