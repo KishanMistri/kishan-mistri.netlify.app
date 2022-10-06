@@ -11,4 +11,4 @@ image:
   focal_point: Smart
   preview_only: false
 ---
-https://app.datacamp.com/workspace/w/7e0ab9d3-ec91-4db0-b11e-a50de0a390b9/edit
+[Bee Image Classification using a CNN](<https://app.datacamp.com/workspace/w/7e0ab9d3-ec91-4db0-b11e-a50de0a390b9/edit>)
