@@ -1,6 +1,6 @@
 ---
 widget: accomplishments
-active: true
+active: false
 date_format: Jan 2006
 item:
   - certificate_url: https://www.credly.com/badges/c42a8d67-8ef4-46f9-bfaf-706840820e76
@@ -31,9 +31,9 @@ widget_id: home-accomplishments
 headless: true
 weight: 50
 title: Accomplishments
-subtitle: " Data Scientist"
+subtitle: ""
 design:
   columns: "2"
   background:
-    image: data_scientist_associate_banner.svg
+    image: ""
 ---
