@@ -1,6 +1,6 @@
 ---
 widget: accomplishments
-active: false
+active: true
 date_format: Jan 2006
 item:
   - certificate_url: https://www.credly.com/badges/c42a8d67-8ef4-46f9-bfaf-706840820e76
