@@ -3,6 +3,14 @@ widget: accomplishments
 active: true
 date_format: Jan 2006
 item:
+  - certificate_url: https://www.datacamp.com/certificate/DSA0014098504555
+    date_end: 2022-10-30
+    date_start: 2024-10-24
+    description: ""
+    organization: DataCamp
+    organization_url: https://www.datacamp.com/about
+    title: DataCamp Certified Data Scientist – Associate
+    url: https://www.datacamp.com/certificate/DSA0014098504555
   - certificate_url: https://www.credly.com/badges/c42a8d67-8ef4-46f9-bfaf-706840820e76
     date_end: 2024-06-20
     date_start: 2021-06-21
