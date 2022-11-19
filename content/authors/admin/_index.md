@@ -17,6 +17,12 @@ social:
     icon_pack: fab
     link: https://github.com/KishanMistri
     label: GitHub
+  - display:
+      header: false
+    link: https://leetcode.com/kmistri/
+    icon_pack: fab
+    label: LeetCode
+    icon: laptop-code
   - icon: linkedin-in
     icon_pack: fab
     link: https://www.linkedin.com/in/kishan-mistri/
@@ -26,12 +32,6 @@ social:
   - icon: cv
     icon_pack: ai
     link: uploads/resume-kmistri.pdf
-  - display:
-      header: false
-    link: https://leetcode.com/kmistri/
-    icon_pack: fab
-    label: LeetCode
-    icon: laptop-code
 organizations:
   - name: Oracle India Pvt Ltd
     url: https://www.oracle.com/in/corporate/
