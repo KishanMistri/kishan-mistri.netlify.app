@@ -22,7 +22,7 @@ social:
     link: https://leetcode.com/kmistri/
     icon_pack: fab
     label: LeetCode
-    icon: laptop-code
+    icon: code
   - icon: linkedin-in
     icon_pack: fab
     link: https://www.linkedin.com/in/kishan-mistri/
