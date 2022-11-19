@@ -20,9 +20,9 @@ social:
   - display:
       header: false
     link: https://leetcode.com/kmistri/
-    icon_pack: fab
+    icon_pack: far
     label: LeetCode
-    icon: code
+    icon: laptop-code
   - icon: linkedin-in
     icon_pack: fab
     link: https://www.linkedin.com/in/kishan-mistri/
