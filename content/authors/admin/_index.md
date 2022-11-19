@@ -1,6 +1,7 @@
 ---
 title: Kishan Mistri
 role: Senior Member of Technical Staff
+avatar_filename: avatar.jpg
 bio: My interests include solve day to day data science problems, deploying,
   scaling and managing ML model/system and other programmable matter.
 interests:
