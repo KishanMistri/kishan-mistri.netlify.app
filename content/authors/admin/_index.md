@@ -20,7 +20,7 @@ social:
   - display:
       header: false
     link: https://leetcode.com/kmistri/
-    icon_pack: far
+    icon_pack: fas
     label: LeetCode
     icon: laptop-code
   - icon: linkedin-in
