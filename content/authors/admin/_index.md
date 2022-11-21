@@ -40,10 +40,10 @@ education:
   courses:
     - course: Diploma in Applied Machine Learning
       institution: University Of Hyderabad and AppliedRoots
-      year: 2022
+      year: ""
     - course: B.Tech in Information Technology
       institution: Institute of Technology, Nirma University
-      year: 2018
+      year: ""
 email: kishan.mistri.111@gmail.com
 superuser: true
 highlight_name: true
