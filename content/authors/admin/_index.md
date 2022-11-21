@@ -14,22 +14,30 @@ social:
     icon_pack: fas
     link: /#contact
     label: Email
-  - icon: github
-    icon_pack: fab
-    link: https://github.com/KishanMistri
-    label: GitHub
-  - display:
-      header: false
-    link: https://leetcode.com/kmistri/
-    icon_pack: fas
-    label: LeetCode
-    icon: laptop-code
   - icon: linkedin-in
     icon_pack: fab
     link: https://www.linkedin.com/in/kishan-mistri/
     display:
       header: true
     label: LinkedIn
+  - display:
+      header: false
+    link: https://www.datacamp.com/profile/kmistri
+    icon_pack: ai
+    icon: open-data
+    label: DataCamp
+  - icon: github
+    icon_pack: fab
+    link: https://github.com/KishanMistri
+    label: GitHub
+    display:
+      header: false
+  - display:
+      header: false
+    link: https://leetcode.com/kmistri/
+    icon_pack: fas
+    label: LeetCode
+    icon: laptop-code
   - icon: cv
     icon_pack: ai
     link: uploads/resume-kmistri.pdf
