@@ -7,11 +7,11 @@ url_video: ""
 title: M5 Accuracy - Walmart Sales prediction
 subtitle: ""
 featured: true
-tags: []
+tags:
+  - Machine Learning
 external_link: https://github.com/KishanMistri/Walmart_Sales_Deployment#readme
 url_slides: ""
-categories:
-  - Classical Machine Learning
+categories: []
 links:
   - url: https://kishanmistri-walmart-sales-deployment.streamlit.app/
     name: Dashboard Demo
@@ -20,8 +20,8 @@ links:
 image:
   caption: Walmart Banner
   focal_point: Smart
-  filename: https://raw.githubusercontent.com/Masterx-AI/Project_Retail_Analysis_with_Walmart/main/Wallmart1.jpg
-  preview_only: true
+  filename: walmart-project-banner.jpg
+  preview_only: false
 url_code: ""
 ---
 **The primary objective of this study is to forecast/predict sales accurately for the item-unit deals for Walmart based on store sales data provided for three US states (California, Texas, and Wisconsin). To perform expectations on different items sold in Walmart, machine learning methods have been actualized beside the conventional strategies to extend the exactness. Three diverse machine learning models are utilized to figure out daily deals for taking after 28 days. The primary problem at hand is to predict the price from historical data.**
