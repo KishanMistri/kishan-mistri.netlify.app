@@ -11,7 +11,8 @@ tags:
   - Machine Learning
 external_link: https://github.com/KishanMistri/Walmart_Sales_Deployment#readme
 url_slides: ""
-categories: []
+categories:
+  - Machine Learning
 links:
   - url: https://kishanmistri-walmart-sales-deployment.streamlit.app/
     name: Dashboard Demo
