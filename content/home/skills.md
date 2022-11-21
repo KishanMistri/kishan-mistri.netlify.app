@@ -20,12 +20,12 @@ feature:
     name: Machine Learning
     description: 
     
-  - icon: cloud-check
+  - icon: cloud
     icon_pack: fas
     name: Clouds
     description: Designing & deploying automated solution on Cloud Provider Primarily on AWS, Oracle
   - icon: docker
-    icon_pack: fas
+    icon_pack: fab
     name: Containerization
     description: Developing , deploying and managing containers and having exposure to container orchastrators like Kubernetes & Swarm.
   - icon: brain
