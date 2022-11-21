@@ -2,17 +2,10 @@
 slides: example
 url_pdf: ""
 date: 2022-04-04T09:45:37.997Z
-summary: "**The primary objective of this study is to forecast/predict sales
-  accurately for the item-unit deals for Walmart based on store sales data
-  provided for three US states (California, Texas, and Wisconsin). To perform
-  expectations on different items sold in Walmart, machine learning methods have
-  been actualized beside the conventional strategies to extend the exactness.
-  Three diverse machine learning models are utilized to figure out daily deals
-  for taking after 28 days. The primary problem at hand is to predict the price
-  from historical data.**"
+summary: Walmart Unit Sales Forecasting for the next 28 days
 url_video: ""
 title: M5 Accuracy - Walmart Sales prediction
-subtitle: Walmart Unit Sales Forecasting for the next 28 days
+subtitle: ""
 featured: true
 tags:
   - Machine Learning
@@ -29,3 +22,4 @@ image:
   filename: https://raw.githubusercontent.com/Masterx-AI/Project_Retail_Analysis_with_Walmart/main/Wallmart1.jpg
 url_code: ""
 ---
+**The primary objective of this study is to forecast/predict sales accurately for the item-unit deals for Walmart based on store sales data provided for three US states (California, Texas, and Wisconsin). To perform expectations on different items sold in Walmart, machine learning methods have been actualized beside the conventional strategies to extend the exactness. Three diverse machine learning models are utilized to figure out daily deals for taking after 28 days. The primary problem at hand is to predict the price from historical data.**
