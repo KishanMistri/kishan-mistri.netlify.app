@@ -29,10 +29,10 @@ content:
     tag: '*'
   - name: Deep Learning
     tag: Deep Learning
-  - name: Classical Machine Learning
-    tag: Demo
-  - name: Other
-    tag: Demo
+  - name: Machine Learning
+    tag: Machine Learning
+  - name: Others
+    tag: Others
 
 design:
   # Choose how many columns the section has. Valid values: '1' or '2'.
