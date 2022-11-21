@@ -11,7 +11,8 @@ tags:
   - Machine Learning
 external_link: https://github.com/KishanMistri/Music-Genre-Classification#readme
 url_slides: ""
-categories: []
+categories:
+  - Machine Learning
 links: []
 image:
   caption: Photo by rawpixel on Unsplash
