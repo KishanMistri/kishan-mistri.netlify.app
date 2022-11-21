@@ -2,7 +2,7 @@
 title: Bee Image Classification using a CNN
 subtitle: Which one is it? Honey or Bumble bee?
 date: 2022-09-28T12:19:28.393Z
-draft: false
+draft: true
 featured: false
 tags:
   - ComputerVision
