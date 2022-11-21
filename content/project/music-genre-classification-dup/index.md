@@ -6,7 +6,7 @@ summary: Walmart Unit Sales Forecasting for the next 28 days
 url_video: ""
 title: M5 Accuracy - Walmart Sales prediction
 subtitle: ""
-featured: true
+featured: false
 tags:
   - Machine Learning
 external_link: https://github.com/KishanMistri/Walmart_Sales_Deployment#readme
