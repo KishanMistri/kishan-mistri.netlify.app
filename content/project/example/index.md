@@ -1,20 +1,21 @@
 ---
 slides: example
 url_pdf: ""
-title: Music Genre Classification
-summary: An example of using the in-built project page.
-url_video: ""
 date: 2016-04-27T00:00:00.000Z
-external_link: https://github.com/KishanMistri/Music-Genre-Classification/blob/master/README.md
-url_slides: ""
-subtitle: An example of using the in-built project page.
+summary: Identify music classes from provided top 10 genres.
+url_video: ""
+title: Music Genre Classification
+subtitle: ""
+featured: true
 tags:
   - Machine Learning
+external_link: https://github.com/KishanMistri/Music-Genre-Classification#readme
+url_slides: ""
+categories: []
 links: []
 image:
   caption: Photo by rawpixel on Unsplash
   focal_point: Smart
+  filename: featured.jpg
 url_code: ""
 ---
-
-# This is Description for the Project
