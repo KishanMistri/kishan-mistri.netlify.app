@@ -5,7 +5,7 @@ headless: true
 weight: 30
 title: Skills
 subtitle: null
-active: true
+active: false
 feature:
   - icon: python
     icon_pack: fab
@@ -33,11 +33,11 @@ feature:
     description: null
 design:
   background:
-    color: "#df1313"
-    gradient_start: "#554949"
-    gradient_end: "#cae21f"
-    text_color_light: true
-    image_darken: 1
-    image: icon_backup.png
-  columns: "1"
+    color: "#f4efef"
+    gradient_start: "#f6f0f0"
+    gradient_end: "#f9faf5"
+    text_color_light: false
+    image_darken: ""
+    image: ""
+  columns: ""
 ---
