@@ -14,30 +14,36 @@ feature:
   - icon: chart-line
     icon_pack: fas
     name: Statistics
-    description: Stats & Plotting
+    description: Data Analysis, Data Visualization
   - icon: dataverse
     icon_pack: ai
-    name: Machine-Learning
-    description: null
+    name: Machine Learning
+    description: 
+    
+  - icon: cloud-check
+    icon_pack: fas
+    name: Clouds
+    description: Designing & deploying automated solution on Cloud Provider Primarily on AWS, Oracle
+  - icon: docker
+    icon_pack: fas
+    name: Containerization
+    description: Developing , deploying and managing containers and having exposure to container orchastrators like Kubernetes & Swarm.
+  - icon: brain
+    icon_pack: fas
+    name: Deep Learning
+    description: Apply, tune & deploy state of the art techniques for specific problems (NLP, Image Segmentation)
+
   - icon: database
     icon_pack: fas
     name: Database
-    description: DBMS, SQL
+    description: SQL, PostgreSQL
   - icon: object-group
     icon_pack: fas
-    name: System Design & DevOps
+    name: System Design
     description: Designing & deploying automated solution on Cloud Provider Primarily on AWS
   - icon: hiking
     icon_pack: fas
     name: Trekking
-    description: null
-design:
-  background:
-    color: "#f4efef"
-    gradient_start: "#f6f0f0"
-    gradient_end: "#f9faf5"
-    text_color_light: false
-    image_darken: ""
-    image: ""
-  columns: ""
+    description: “Not all who wander are lost.” — J. R. R. Tolkien
+
 ---
