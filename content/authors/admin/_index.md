@@ -46,12 +46,12 @@ organizations:
     url: https://www.oracle.com/in/corporate/
 education:
   courses:
-    - course: Diploma in Applied Machine Learning (2021 - 2022)
+    - course: Diploma in Applied Machine Learning (2021-'22)
       institution: University Of Hyderabad and AppliedRoots
       year: ""
-    - course: B.Tech in Information Technology (2014 - 2018)
+    - course: B.Tech in Information Technology (2014-'18)
       institution: Institute of Technology, Nirma University
-      year: 3
+      year: ""
 email: kishan.mistri.111@gmail.com
 superuser: true
 highlight_name: true
