@@ -26,18 +26,18 @@ social:
     icon_pack: ai
     icon: open-data
     label: DataCamp
-  - icon: github
-    icon_pack: fab
-    link: https://github.com/KishanMistri
-    label: GitHub
-    display:
-      header: false
   - display:
       header: false
     link: https://leetcode.com/kmistri/
     icon_pack: fas
     label: LeetCode
     icon: laptop-code
+  - icon: github
+    icon_pack: fab
+    link: https://github.com/KishanMistri
+    label: GitHub
+    display:
+      header: false
   - icon: cv
     icon_pack: ai
     link: uploads/resume-kmistri.pdf
