@@ -6,7 +6,7 @@ summary: Identify music classes from provided top 10 genres.
 url_video: ""
 title: Music Genre Classification - Walmart
 subtitle: ""
-featured: false
+featured: true
 tags:
   - Machine Learning
 external_link: https://github.com/KishanMistri/Music-Genre-Classification#readme
