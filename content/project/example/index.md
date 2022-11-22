@@ -1,7 +1,7 @@
 ---
 slides: example
 url_pdf: ""
-date: 2016-04-27T00:00:00.000Z
+date: 2017-07-17T12:00:00.000Z
 summary: Identify music classes from provided top 10 genres.
 url_video: ""
 title: Music Genre Classification
