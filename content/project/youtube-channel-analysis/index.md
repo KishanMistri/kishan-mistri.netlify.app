@@ -13,7 +13,7 @@ tags:
   - Machine Learning
 links: []
 image:
-  caption: Photo by rawpixel on Unsplash
+  caption: 1) Rename image before upload to "FEATURED.JPG/PNG" 2) Provide caption here
   focal_point: Smart
   filename: https://developers.google.com/youtube/images/youtube_home_page_analytics_api.png
 url_code: ""
