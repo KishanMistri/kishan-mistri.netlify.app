@@ -1,6 +1,6 @@
 ---
 title: Will they be present for Next workout?
-date: 2022-11-22T07:13:49.758Z
+date: 2022-10-26T08:13:00.000Z
 summary: Predicting the attendance rate for each fitness classes.
 draft: false
 featured: false
