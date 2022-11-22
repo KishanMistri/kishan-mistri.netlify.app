@@ -21,7 +21,7 @@ links:
 image:
   caption: Walmart Banner
   focal_point: Smart
-  filename: walmart-project-banner.jpg
+  filename: featured.jpg
   preview_only: false
 url_code: ""
 ---
