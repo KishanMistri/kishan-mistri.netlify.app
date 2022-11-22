@@ -17,6 +17,6 @@ links: []
 image:
   caption: Photo by rawpixel on Unsplash
   focal_point: Smart
-  filename: featured.jpg
+  filename: walmart-project-banner.jpg
 url_code: ""
 ---
