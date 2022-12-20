@@ -763,6 +763,9 @@ df = pd.DataFrame(retweets, columns=['Retweets','Favorites', 'Followers', 'Scree
 df = df.groupby(['ScreenName','Text','Followers']).sum().sort_values(by = ['Followers'],ascending=[False])
 df.style.background_gradient()
 ```
+<details>
+  <summary>Expand Output</summary>
+
 
 | Tweets Object                                                                                                                                                                  | Retweets | Favorites |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------- | --------- |
@@ -965,6 +968,9 @@ df.style.background_gradient()
 | ('martyydg', 'RT @martyydg: Semplicemente MERAVIGLIOSO #WeLoveTheEarth https://t.co/m6I2J2soEe', 12)                                                                           | 2        | 2         |
 | ('biebermylife946', 'RT @biebermylife946: Salviamo il posto in cui viviamo,acquistando la canzone daremo una speranza. #WeLoveTheEarth https://t.co/6OmM8oAvhG', 12)           | 2        | 2         |
 | ('Malikjvvd', 'RT @Malikjvvd: Uwuuu uwuuuuuu\n#WeLoveTheEarth https://t.co/WtVzUrVJW1', 1)                                                                                     | 64       | 208       |
+
+</details>
+
 
 ## 9. Analyzing used languages
 
