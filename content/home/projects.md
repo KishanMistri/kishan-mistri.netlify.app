@@ -18,8 +18,11 @@ content:
       tag: Machine Learning
     - name: Others
       tag: Others
+    - name: NLP
+      tag: NLP
+    
 design:
   columns: "2"
   view: 3
-  flip_alt_rows: false
+  flip_alt_rows: True
 ---
