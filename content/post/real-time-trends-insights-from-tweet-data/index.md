@@ -782,3 +782,379 @@ print(json.dumps(US_trends,indent = 1))
      }
     ]
 
+
+## 3.  Finding common trends
+<p>🕵️‍♀️ From the pretty-printed results (output of the previous task), we can observe that:</p>
+<ul>
+<li><p>We have an array of trend objects having: the name of the trending topic, the query parameter that can be used to search for the topic on Twitter-Search, the search URL and the volume of tweets for the last 24 hours, if available. (The trends get updated every 5 mins.)</p></li>
+<li><p>At query time <b><i>#BeratKandili, #GoodFriday</i></b> and <b><i>#WeLoveTheEarth</i></b> were trending WW.</p></li>
+<li><p><i>"tweet_volume"</i> tell us that <i>#WeLoveTheEarth</i> was the most popular among the three.</p></li>
+<li><p>Results are not sorted by <i>"tweet_volume"</i>. </p></li>
+<li><p>There are some trends which are unique to the US.</p></li>
+</ul>
+<hr>
+<p>It’s easy to skim through the two sets of trends and spot common trends, but let's not do "manual" work. We can use Python’s <strong>set</strong> data structure to find common trends — we can iterate through the two trends objects, cast the lists of names to sets, and call the intersection method to get the common names between the two sets.</p>
+
+
+```python
+# Extracting all the WW trend names from WW_trends
+world_trends = set([WW_trends[0]['trends'][i]['name'] for i in range(len(WW_trends[0]['trends']))])
+
+# Extracting all the US trend names from US_trends
+us_trends =  set([US_trends[0]['trends'][i]['name'] for i in range(len(US_trends[0]['trends']))])
+
+# Getting the intersection of the two sets of trends
+common_trends = world_trends.intersection(us_trends)
+
+# Inspecting the data
+print(world_trends, "\n")
+print(us_trends, "\n")
+print (len(common_trends), "common trends:", common_trends)
+```
+
+    {'プリウス', '東京・池袋衝突事故', '#DuyguAsena', '#اغلاق_BBM', '#يوم_الجمعه', '브이알', '#HardikPatel', '#ProtestoEdiyorum', '#ViernesSanto', 'örgütdeğil arkadaşgrubu', '#195TLdenTTVerilir', 'Lyra McKee', 'Lil Dicky', 'Derry', '#BLACKPINKxCorden', '#Jersey', '歩行者', '#ConCalmaRemix', '#19aprile', '#CHIvLIO', '#GoodFriday', '免許返納', '高齢者', '池袋の事故', 'Derrick White', '十二国記', 'Shiv Sena', '重体の女性と女児', '#ShivSena', '#BeratKandili', 'Berat Kandilimiz', '#HayırlıCumalar', '刀ステ', '#HayırlıKandiller', '#IndonesianElectionHeroes', '#DragRace', 'グレア', '#AFLNorthDons', '#HanumanJayanti', '#NikahUmurBerapa', '#NRLBulldogsSouths', '#JunquerasACN', 'Hemant Karkare', '#KpuJanganCurang', '#Ontas', '#DinahJane1', '#TheJudasInMyLife', '#WeLoveTheEarth', 'Priyanka Chaturvedi', '#Karfreitag'} 
+    
+    {'#WGAMIX', '#CriticalRoleSpoilers', '#WeirdDateStories', '#MyDrunkUncleSays', '#WorldofWarcraftMains', 'Servais', '#MyInnerDemonSaid', 'Oshie', '#RPDR', '#Earth', 'Lyra McKee', 'Lil Dicky', 'Derry', '#BLACKPINKxCorden', '#TheLegendOfVoxMachina', '#LilDicky', 'Shy Glizzy', 'Seth Abramson', 'Silky', '#ConCalmaRemix', 'Kazuo Koike', 'Gallant', 'Tomas Hertl', 'Derrick White', '#MakeAMovieSensual', '#GossipShouldBe', '#HustleAndSoul', '#StarTrekDiscovery', 'Lone Wolf and Cub', '#FridayFeeling', 'David Fletcher', '#DontChangeOutNow', '#TimeToImpeach', 'WE LOVE THE EARTH', '#DragRace', '#rupaulsdragrace', '#CUZILOVEYOU', 'Kevin Durant', '#AFLNorthDons', '#NRLBulldogsSouths', 'Mike Anderson', 'George Conway', 'Game 6', '#WhatStopsYouFromGoingHome', '#DinahJane1', '"Earth"', '#fridaymotivation', '#GSWvsLAC', 'Yvie', '#WeLoveTheEarth'} 
+    
+    11 common trends: {'Lyra McKee', 'Lil Dicky', 'Derry', '#BLACKPINKxCorden', '#ConCalmaRemix', '#DinahJane1', '#DragRace', '#AFLNorthDons', 'Derrick White', '#WeLoveTheEarth', '#NRLBulldogsSouths'}
+
+
+## 4. Exploring the hot trend
+<p>🕵️‍♀️ From the intersection (last output) we can see that, out of the two sets of trends (each of size 50), we have 11 overlapping topics. In particular, there is one common trend that sounds very interesting: <i><b>#WeLoveTheEarth</b></i> — so good to see that <em>Twitteratis</em> are unanimously talking about loving Mother Earth! 💚 </p>
+<p><i><b>Note</b>: We could have had no overlap or a much higher overlap; when we did the query for getting the trends, people in the US could have been on fire obout topics only relevant to them.</i>
+<br>
+<img src="https://assets.datacamp.com/production/project_760/img/earth.jpg" style="width: 500px"></p>
+<div style="text-align: center;"><i>Image Source:Official Music Video Cover: https://welovetheearth.org/video/</i></div>
+<hr>
+<p>We have found a hot-trend, #WeLoveTheEarth. Now let's see what story it is screaming to tell us! <br>
+If we query Twitter's search API with this hashtag as query parameter, we get back actual tweets related to it. We have the response from the search API stored in the datasets folder as <i>'WeLoveTheEarth.json'</i>. So let's load this dataset and do a deep dive in this trend.</p>
+
+
+```python
+# Loading the data
+tweets = json.loads(open('datasets/WeLoveTheEarth.json').read())
+
+# Inspecting some tweets
+tweets[0:2]
+```
+
+
+
+
+    [{'created_at': 'Fri Apr 19 08:46:48 +0000 2019',
+      'id': 1119160405270523904,
+      'id_str': '1119160405270523904',
+      'text': 'RT @lildickytweets: 🌎 out now #WeLoveTheEarth https://t.co/L22XsoT5P1',
+      'truncated': False,
+      'entities': {'hashtags': [{'text': 'WeLoveTheEarth', 'indices': [30, 45]}],
+       'symbols': [],
+       'user_mentions': [{'screen_name': 'lildickytweets',
+         'name': 'LD',
+         'id': 1209516660,
+         'id_str': '1209516660',
+         'indices': [3, 18]}],
+       'urls': [{'url': 'https://t.co/L22XsoT5P1',
+         'expanded_url': 'https://youtu.be/pvuN_WvF1to',
+         'display_url': 'youtu.be/pvuN_WvF1to',
+         'indices': [46, 69]}]},
+      'metadata': {'iso_language_code': 'en', 'result_type': 'recent'},
+      'source': '<a href="http://twitter.com/download/android" rel="nofollow">Twitter for Android</a>',
+      'in_reply_to_status_id': None,
+      'in_reply_to_status_id_str': None,
+      'in_reply_to_user_id': None,
+      'in_reply_to_user_id_str': None,
+      'in_reply_to_screen_name': None,
+      'user': {'id': 212375312,
+       'id_str': '212375312',
+       'name': 'fake smile',
+       'screen_name': 'Pati95Poland',
+       'location': 'SWAGLAND   ',
+       'description': "''you just got knocked the fuck out''",
+       'url': 'https://t.co/nxzlSyYZSK',
+       'entities': {'url': {'urls': [{'url': 'https://t.co/nxzlSyYZSK',
+           'expanded_url': 'http://loveeeujdb.tumblr.com/',
+           'display_url': 'loveeeujdb.tumblr.com',
+           'indices': [0, 23]}]},
+        'description': {'urls': []}},
+       'protected': False,
+       'followers_count': 2306,
+       'friends_count': 697,
+       'listed_count': 28,
+       'created_at': 'Fri Nov 05 22:25:29 +0000 2010',
+       'favourites_count': 5552,
+       'utc_offset': None,
+       'time_zone': None,
+       'geo_enabled': True,
+       'verified': False,
+       'statuses_count': 185750,
+       'lang': 'pl',
+       'contributors_enabled': False,
+       'is_translator': False,
+       'is_translation_enabled': False,
+       'profile_background_color': 'FFFFFF',
+       'profile_background_image_url': 'http://abs.twimg.com/images/themes/theme18/bg.gif',
+       'profile_background_image_url_https': 'https://abs.twimg.com/images/themes/theme18/bg.gif',
+       'profile_background_tile': False,
+       'profile_image_url': 'http://pbs.twimg.com/profile_images/1093929135183937537/hQuxtwKq_normal.jpg',
+       'profile_image_url_https': 'https://pbs.twimg.com/profile_images/1093929135183937537/hQuxtwKq_normal.jpg',
+       'profile_banner_url': 'https://pbs.twimg.com/profile_banners/212375312/1522705183',
+       'profile_link_color': 'ABB8C2',
+       'profile_sidebar_border_color': 'FFFFFF',
+       'profile_sidebar_fill_color': 'F6F6F6',
+       'profile_text_color': '333333',
+       'profile_use_background_image': True,
+       'has_extended_profile': True,
+       'default_profile': False,
+       'default_profile_image': False,
+       'following': False,
+       'follow_request_sent': False,
+       'notifications': False,
+       'translator_type': 'regular'},
+      'geo': None,
+      'coordinates': None,
+      'place': None,
+      'contributors': None,
+      'retweeted_status': {'created_at': 'Fri Apr 19 04:22:29 +0000 2019',
+       'id': 1119093888524754946,
+       'id_str': '1119093888524754946',
+       'text': '🌎 out now #WeLoveTheEarth https://t.co/L22XsoT5P1',
+       'truncated': False,
+       'entities': {'hashtags': [{'text': 'WeLoveTheEarth', 'indices': [10, 25]}],
+        'symbols': [],
+        'user_mentions': [],
+        'urls': [{'url': 'https://t.co/L22XsoT5P1',
+          'expanded_url': 'https://youtu.be/pvuN_WvF1to',
+          'display_url': 'youtu.be/pvuN_WvF1to',
+          'indices': [26, 49]}]},
+       'metadata': {'iso_language_code': 'en', 'result_type': 'recent'},
+       'source': '<a href="http://twitter.com" rel="nofollow">Twitter Web Client</a>',
+       'in_reply_to_status_id': None,
+       'in_reply_to_status_id_str': None,
+       'in_reply_to_user_id': None,
+       'in_reply_to_user_id_str': None,
+       'in_reply_to_screen_name': None,
+       'user': {'id': 1209516660,
+        'id_str': '1209516660',
+        'name': 'LD',
+        'screen_name': 'lildickytweets',
+        'location': 'Earth',
+        'description': 'Rapper/Actor/Comedian/Model #WeLoveTheEarth',
+        'url': 'https://t.co/aFrPkkJKqs',
+        'entities': {'url': {'urls': [{'url': 'https://t.co/aFrPkkJKqs',
+            'expanded_url': 'https://LilDicky.lnk.to/Earth',
+            'display_url': 'LilDicky.lnk.to/Earth',
+            'indices': [0, 23]}]},
+         'description': {'urls': []}},
+        'protected': False,
+        'followers_count': 503111,
+        'friends_count': 945,
+        'listed_count': 657,
+        'created_at': 'Fri Feb 22 19:06:15 +0000 2013',
+        'favourites_count': 7696,
+        'utc_offset': None,
+        'time_zone': None,
+        'geo_enabled': False,
+        'verified': True,
+        'statuses_count': 14430,
+        'lang': 'en',
+        'contributors_enabled': False,
+        'is_translator': False,
+        'is_translation_enabled': False,
+        'profile_background_color': '000000',
+        'profile_background_image_url': 'http://abs.twimg.com/images/themes/theme14/bg.gif',
+        'profile_background_image_url_https': 'https://abs.twimg.com/images/themes/theme14/bg.gif',
+        'profile_background_tile': False,
+        'profile_image_url': 'http://pbs.twimg.com/profile_images/1119087366679846912/XSa4fpQA_normal.png',
+        'profile_image_url_https': 'https://pbs.twimg.com/profile_images/1119087366679846912/XSa4fpQA_normal.png',
+        'profile_banner_url': 'https://pbs.twimg.com/profile_banners/1209516660/1555646206',
+        'profile_link_color': '858585',
+        'profile_sidebar_border_color': 'FFFFFF',
+        'profile_sidebar_fill_color': 'DDEEF6',
+        'profile_text_color': '333333',
+        'profile_use_background_image': True,
+        'has_extended_profile': False,
+        'default_profile': False,
+        'default_profile_image': False,
+        'following': False,
+        'follow_request_sent': False,
+        'notifications': False,
+        'translator_type': 'none'},
+       'geo': None,
+       'coordinates': None,
+       'place': None,
+       'contributors': None,
+       'is_quote_status': False,
+       'retweet_count': 7482,
+       'favorite_count': 13317,
+       'favorited': False,
+       'retweeted': False,
+       'possibly_sensitive': False,
+       'lang': 'en'},
+      'is_quote_status': False,
+      'retweet_count': 7482,
+      'favorite_count': 0,
+      'favorited': False,
+      'retweeted': False,
+      'possibly_sensitive': False,
+      'lang': 'en'},
+     {'created_at': 'Fri Apr 19 08:46:48 +0000 2019',
+      'id': 1119160404876206080,
+      'id_str': '1119160404876206080',
+      'text': '💚🌎💚  #WeLoveTheEarth 👇🏼',
+      'truncated': False,
+      'entities': {'hashtags': [{'text': 'WeLoveTheEarth', 'indices': [5, 20]}],
+       'symbols': [],
+       'user_mentions': [],
+       'urls': []},
+      'metadata': {'iso_language_code': 'und', 'result_type': 'recent'},
+      'source': '<a href="http://twitter.com/download/iphone" rel="nofollow">Twitter for iPhone</a>',
+      'in_reply_to_status_id': None,
+      'in_reply_to_status_id_str': None,
+      'in_reply_to_user_id': None,
+      'in_reply_to_user_id_str': None,
+      'in_reply_to_screen_name': None,
+      'user': {'id': 72150460,
+       'id_str': '72150460',
+       'name': 'Alfonsina del Mar (Dianishka Prietishka)',
+       'screen_name': 'Diana____X',
+       'location': 'México',
+       'description': '☸︎ ⚓︎ 👩🏻\u200d✈️ ★★★★ ♒︎',
+       'url': None,
+       'entities': {'description': {'urls': []}},
+       'protected': False,
+       'followers_count': 223,
+       'friends_count': 513,
+       'listed_count': 0,
+       'created_at': 'Sun Sep 06 23:26:24 +0000 2009',
+       'favourites_count': 750,
+       'utc_offset': None,
+       'time_zone': None,
+       'geo_enabled': True,
+       'verified': False,
+       'statuses_count': 1668,
+       'lang': 'es',
+       'contributors_enabled': False,
+       'is_translator': False,
+       'is_translation_enabled': False,
+       'profile_background_color': '642D8B',
+       'profile_background_image_url': 'http://abs.twimg.com/images/themes/theme10/bg.gif',
+       'profile_background_image_url_https': 'https://abs.twimg.com/images/themes/theme10/bg.gif',
+       'profile_background_tile': True,
+       'profile_image_url': 'http://pbs.twimg.com/profile_images/1072296818531278848/tgn0e2h4_normal.jpg',
+       'profile_image_url_https': 'https://pbs.twimg.com/profile_images/1072296818531278848/tgn0e2h4_normal.jpg',
+       'profile_banner_url': 'https://pbs.twimg.com/profile_banners/72150460/1545198367',
+       'profile_link_color': '8400FF',
+       'profile_sidebar_border_color': '65B0DA',
+       'profile_sidebar_fill_color': '7AC3EE',
+       'profile_text_color': '3D1957',
+       'profile_use_background_image': True,
+       'has_extended_profile': True,
+       'default_profile': False,
+       'default_profile_image': False,
+       'following': False,
+       'follow_request_sent': False,
+       'notifications': False,
+       'translator_type': 'none'},
+      'geo': None,
+      'coordinates': None,
+      'place': None,
+      'contributors': None,
+      'is_quote_status': False,
+      'retweet_count': 0,
+      'favorite_count': 0,
+      'favorited': False,
+      'retweeted': False,
+      'lang': 'und'}]
+
+
+
+## 5. Digging deeper
+<p>🕵️‍♀️ Printing the first two tweet items makes us realize that there’s a lot more to a tweet than what we normally think of as a tweet — there is a lot more than just a short text!</p>
+<hr>
+<p>But hey, let's not get overwhemled by all the information in a tweet object! Let's focus on a few interesting fields and see if we can find any hidden insights there. </p>
+
+
+```python
+# Extracting the text of all the tweets from the tweet object
+texts = [tweet['text'] for tweet in tweets]
+
+# Extracting screen names of users tweeting about #WeLoveTheEarth
+names = [user_mentions['screen_name'] for tweet in tweets for user_mentions in tweet['entities']['user_mentions']]
+
+# Extracting all the hashtags being used when talking about this topic
+hashtags = [hashtag['text'] for tweet in tweets for hashtag in tweet['entities']['hashtags']]
+
+# Inspecting the first 10 results
+print (json.dumps(texts[0:10], indent=1),"\n")
+print (json.dumps(names[0:10], indent=1),"\n")
+print (json.dumps(hashtags[0:10], indent=1),"\n")
+```
+
+    [
+     "RT @lildickytweets: \ud83c\udf0e out now #WeLoveTheEarth https://t.co/L22XsoT5P1",
+     "\ud83d\udc9a\ud83c\udf0e\ud83d\udc9a  #WeLoveTheEarth \ud83d\udc47\ud83c\udffc",
+     "RT @cabeyoomoon: Ta piosenka to bop,  wpada w ucho  i dochody z niej id\u0105 na dobry cel,  warto s\u0142ucha\u0107 w k\u00f3\u0142ko i w k\u00f3\u0142ko gdziekolwiek si\u0119 ty\u2026",
+     "#WeLoveTheEarth \nCzemu ja si\u0119 pop\u0142aka\u0142am",
+     "RT @Spotify: This is epic. @lildickytweets got @justinbieber, @arianagrande, @halsey, @sanbenito, @edsheeran, @SnoopDogg, @ShawnMendes, @Kr\u2026",
+     "RT @biebercentineo: Justin : are we gonna die? \nLil dicky: you know bieber we might die \n\nBTCH IM CRYING #EARTH #WeLoveTheEarth #WELOVEEART\u2026",
+     "RT @dreamsiinflate: #WeLoveTheEarth \u201ci am a fat fucking pig\u201d okay brendon urie https://t.co/FdJmq31xZc",
+     "Literally no one:\n\nMe in the past 4 hours:\n\nI'm a koala and I sleep all the time, so what, it's cute \ud83c\udfb6\n\n#WeLoveTheEarth #EdSheeranTheKoala",
+     "RT @Yuuupthatsme: Mia\u0142e\u015b by\u0107 \u017cyraf\u0105 #WeLoveTheEarth https://t.co/0kNCpU8o6q",
+     "RT @jaguareffects: eu prestando aten\u00e7\u00e3o no \u00e1udio pra identificar cada artista\n\n#WeLoveTheEarth https://t.co/0cDtiV2t1E"
+    ] 
+    
+    [
+     "lildickytweets",
+     "cabeyoomoon",
+     "Spotify",
+     "lildickytweets",
+     "justinbieber",
+     "ArianaGrande",
+     "halsey",
+     "sanbenito",
+     "edsheeran",
+     "SnoopDogg"
+    ] 
+    
+    [
+     "WeLoveTheEarth",
+     "WeLoveTheEarth",
+     "WeLoveTheEarth",
+     "EARTH",
+     "WeLoveTheEarth",
+     "WeLoveTheEarth",
+     "WeLoveTheEarth",
+     "EdSheeranTheKoala",
+     "WeLoveTheEarth",
+     "WeLoveTheEarth"
+    ] 
+    
+
+
+## 6. Frequency analysis
+<p>🕵️‍♀️ Just from the first few results of the last extraction, we can deduce that:</p>
+<ul>
+<li>We are talking about a song about loving the Earth.</li>
+<li>A lot of big artists are the forces behind this Twitter wave, especially Lil Dicky.</li>
+<li>Ed Sheeran was some cute koala in the song — "EdSheeranTheKoala" hashtag! 🐨</li>
+</ul>
+<hr>
+<p>Observing the first 10 items of the interesting fields gave us a sense of the data. We can now take a closer look by doing a simple, but very useful, exercise — computing frequency distributions. Starting simple with frequencies is generally a good approach; it helps in getting ideas about how to proceed further.</p>
+
+
+```python
+# Importing modules
+from collections import Counter
+
+# Counting occcurrences/ getting frequency dist of all names and hashtags
+for item in [names, hashtags]:
+    c = Counter(item)
+    # Inspecting the 10 most common items in c
+    print (c.most_common(10), "\n")
+```
+
+    [('lildickytweets', 102), ('LeoDiCaprio', 44), ('ShawnMendes', 33), ('halsey', 31), ('ArianaGrande', 30), ('justinbieber', 29), ('Spotify', 26), ('edsheeran', 26), ('sanbenito', 25), ('SnoopDogg', 25)] 
+    
+    [('WeLoveTheEarth', 313), ('4future', 12), ('19aprile', 12), ('EARTH', 11), ('fridaysforfuture', 10), ('EarthMusicVideo', 3), ('ConCalmaRemix', 3), ('Earth', 3), ('aliens', 2), ('AvengersEndgame', 2)] 
+    
+
