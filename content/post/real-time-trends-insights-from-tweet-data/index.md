@@ -1,8 +1,10 @@
 ---
 title: Real-time Trends Insights from Tweet Data
 date: 2022-10-06T08:35:01.137Z
-summary: 280 characters leading to the trends. Here is the 280 seconds read on
-  this trend.
+summary: Every second, on average, around 6,000 tweets are tweeted on Twitter,
+  corresponding to over 350,000 tweets sent per minute, 500 million tweets per
+  day and around 200 billion tweets per year. Let's take a dive into
+  understanding how trend analysis can be done on this massive data.
 draft: false
 featured: false
 tags:
