@@ -5,6 +5,11 @@ summary: 280 characters leading to the trends. Here is the 280 seconds read on
   this trend.
 draft: false
 featured: false
+tags:
+  - API
+  - Data-Analysis
+categories:
+  - EDA
 image:
   filename: https://media.sproutsocial.com/uploads/2021/03/11_Twitter_Trending_Topics-1.svg
   focal_point: Smart
