@@ -49,8 +49,10 @@ print(json.dumps(WW_trends,indent = 1))
 print("\n", "US trends:")
 print(json.dumps(US_trends,indent = 1))
 ```
-
-    WW trends:
+<details>
+  <summary>Expand Output</summary>
+  ```json
+ ﻿ WW trends:
     [
      {
       "trends": [
@@ -781,6 +783,10 @@ print(json.dumps(US_trends,indent = 1))
       ]
      }
     ]
+  ```
+</details>
+
+    
 
 
 ## 3.  Finding common trends
