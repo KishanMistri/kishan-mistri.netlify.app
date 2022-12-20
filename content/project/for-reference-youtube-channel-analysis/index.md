@@ -2,17 +2,18 @@
 draft: false
 slides: example
 url_pdf: ""
+title: Personalized Cancer Diagnosis
+subtitle: Classify the 9 cancer classes from text and categorical data.
+date: 2022-12-20T07:12:41.499Z
 summary: Classify the 9 cancer classes from text and categorical data.
 url_video: ""
-date: 2022-12-20T07:12:41.499Z
-categories:
-  - Machine Learning
+featured: true
 external_link: https://github.com/KishanMistri/Personalise-Cancer-Diagnosis/blob/main/README.md
 url_slides: ""
-title: For reference - YouTube Channel Analysis
-subtitle: An example of using the in-built project page.
 tags:
   - NLP
+categories:
+  - Machine Learning
 links:
   - url: https://kmistri-personalise-cancer-diagnosis.streamlit.app/
     name: Demo
