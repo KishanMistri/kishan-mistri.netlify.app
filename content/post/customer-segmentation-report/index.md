@@ -3,6 +3,10 @@ title: Customer Segmentation Report
 date: 2022-09-14T09:37:32.191Z
 draft: false
 featured: false
+tags:
+  - EDA
+categories:
+  - EDA
 image:
   filename: https://researchamericainc.com/_img/segmentation-illustration.png
   focal_point: Smart
@@ -293,7 +297,7 @@ g.fig.suptitle("Unprocessed Variable Distributions", fontsize=16)
 plt.show()
 ```
     
-![png](https://drive.google.com/file/d/1zciKFKwN3pi_Z_1SRDQlk6saDitI3PIk/view?usp=share_link)
+![png](https://user-images.githubusercontent.com/20341930/208640481-c85d002b-1d81-49f2-b8ce-9cd7e2acfc2f.png)
 
 Before proceeding, it is crucial to ensure that all columns selected for clustering are numeric. The following code iterates through the reduced DataFrame and checks whether each column is numeric. If it returns `True`, then you can proceed with the pre-processing.
 
@@ -333,7 +337,7 @@ g.fig.subplots_adjust(top=0.8)
 g.fig.suptitle("Preprocessed Variable Distributions", fontsize=16)
 plt.show()
 ```
-![png](https://drive.google.com/file/d/1MS3tR72e8Djg6DmNA27lng6mLo7YfNWd/view?usp=share_link)
+![png](https://user-images.githubusercontent.com/20341930/208640501-9809e47f-9925-4860-998f-2d25d2db0cc0.png)
     
 
 
@@ -377,7 +381,7 @@ plt.ylabel("SSE")  # Add y-axis label
 plt.show()
 ```
     
-![png](https://drive.google.com/file/d/1MS3tR72e8Djg6DmNA27lng6mLo7YfNWd/view?usp=share_link)
+![png](https://user-images.githubusercontent.com/20341930/208640509-b6265b2f-7232-4eee-98b4-3e76c6b76e93.png)
 
 ## 5. Clustering the Data
 You can now select an optimal number of clusters based on the elbow plot above by setting `k`. In this example, `k` is set to 3.
@@ -606,7 +610,7 @@ plt.suptitle("Average Values by Cluster", y=1.04, fontsize=16)
 plt.show()
 ```
 
-![png](https://drive.google.com/file/d/1Z8qatvpcpdYjqoKGm9gTSmigXtBs0dG8/view?usp=share_link)
+![png](https://user-images.githubusercontent.com/20341930/208640524-c4526195-435a-4e6a-b126-9e3758b213a1.png)
 
 ### 6b. Create a Snake Plot of the Clusters
 The next step takes the processed data and visualizes the differences between the clusters using a snake plot. This can be helpful in spotting trends or key differences that would not be visible with the raw data.
@@ -641,7 +645,7 @@ sns.lineplot(data=df_processed_melt, x='Metric', y='Value', hue='Cluster')
 plt.show()
 ```
 
-![png](https://drive.google.com/file/d/179i9HqhIxJhpj63yJg25ccJKIbjTd5U8/view?usp=share_link)
+![png](https://user-images.githubusercontent.com/20341930/208640535-4c8c2e3a-9862-4335-8dd7-1e60c8bbc5c0.png)
     
 
 ### 6c. Create a Heatmap of Relative Importance
@@ -674,7 +678,7 @@ sns.heatmap(data=relative_imp, annot=True, fmt=".2f", cmap=sns.diverging_palette
 plt.show()
 ```
     
-![png](https://drive.google.com/file/d/1IJVsSJ0cBQXv7sKHBdAcTjdiaTX09cqh/view?usp=share_link)
+![png](https://user-images.githubusercontent.com/20341930/208640551-382662b5-ee68-4881-97c7-f534e0092e79.png)
 
 
-This concludes the report! Hope you find it enjoying & insightful.
+This concludes the report! Hope you find it enjoyable & insightful.
