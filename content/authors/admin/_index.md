@@ -1,10 +1,13 @@
 ---
 title: Kishan Mistri
-role: Senior Member of Technical Staff
+role: Senior DevOps Engineer
 avatar_filename: avatar.jpg
-bio: My interests include solve day to day data science problems, efficient
-  deploying, scaling and managing of ML system and other programmable matter.
+bio: My interest includes design and deploy large scale systems with automating
+  small tasks & micro designs. In my extra time, I would like to solve day to
+  day data science problems, efficient deploying, scaling and managing of ML
+  system and just read about the progress of ML.
 interests:
+  - Large Scale System Design
   - ML System Designs
   - Information Retrieval
   - Finance Domain
@@ -56,7 +59,7 @@ email: kishan.mistri.111@gmail.com
 superuser: true
 highlight_name: true
 ---
-My recent working experience was as a DevOps Engineer at Oracle, India with a total of 4+ years of professional experience in the Big Data technological and Data Analytics setting. My software engineering experience route includes a variety of roles & responsibilities such as an SRE, a Splunk Admin and a Consultant to a DevOps Engineer and automating system processes. I am doing the Post Graduate Diploma in Applied Machine Learning with the University of Hyderabad to transition into the Data Science domain. 
+I am currently working as a Senior DevOps Engineer at Zetapp (Previously Known as Onecode) in Bangalore, India with a total of 5+ years of professional experience in the Big Data technological and Data Analytics setting. My software engineering experience route includes a variety of roles & responsibilities such as an SRE, a Splunk Admin and a Consultant to a DevOps Engineer and automating system processes. I have also done the Post Graduate Diploma in Applied Machine Learning with the University of Hyderabad to explore the Data Science domain for my passion.
 
 💬 I am happy to help. Ask me about anything.
 
