@@ -22,6 +22,21 @@ date_format: Jan 2006
 #   Leave `date_end` empty if it's your current employer.
 #   Begin multi-line descriptions with YAML's `|2-` multi-line prefix.
 experience:
+  - title: Senior DevOps Engineer
+    company: Zetapp (Previously known as Onecode)
+    company_url: 'https://zetapp.in/'
+    company_logo: org-zetapp
+    location: Bangalore
+    date_start: '2023-01-16'
+    # date_end: '2024-02-21'
+    description: |2-
+        Responsibilities include:
+        * Design, Build & Migration of infrastructure from Elastic Beanstalk to Kubernetes environment
+        * Designing Deployment Pipeline ensuring industry best practices with various tools 
+        * Revamp & experiment+integrating new security services to ensure the compliance of systems.
+        * Cost Optimization of infrastructure to continuously explore the ways to innovate.
+        * Continuously support, improve & do explorations for different environments like dev, QA, pre-prod & production environments.
+
   - title: Senior Member Of Technical Staff
     company: Oracle India Pvt Ltd
     company_url: 'https://www.oracle.com/in/corporate/'
@@ -33,11 +48,11 @@ experience:
         Responsibilities include:
         * Team: Data Safe - DevOps Engineer
         * New Region Deployment
-        * Integrating Datasafe features in Terraform codebase
+        * Integrating Datasafe features in the Terraform codebase
         * Creating & Update deployment pipelines based on requirements
         * Optimizing metrics and dashboarding
-        * Patching and maintaining configurations specification
-        
+        * Patching and maintaining configuration specification
+
   - title: Senior Site Reliability Engineer
     company: Crest Data Systems
     company_url: 'https://www.crestdatasys.com/'
