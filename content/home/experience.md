@@ -38,7 +38,7 @@ experience:
     company_logo: org-zetapp
     location: Bangalore
     date_start: '2023-01-16'
-    # date_end: '2024-02-21'
+    date_end: '2023-12-15'
     description: |2-
         Responsibilities include:
         * Design, Build & Migration of infrastructure from Elastic Beanstalk to Kubernetes environment
