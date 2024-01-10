@@ -22,6 +22,16 @@ date_format: Jan 2006
 #   Leave `date_end` empty if it's your current employer.
 #   Begin multi-line descriptions with YAML's `|2-` multi-line prefix.
 experience:
+
+  - title: DevOps Engineer
+    company: HDFC Securities
+    company_url: 'https://www.hdfcsec.com/'
+    company_logo: org-hdfcsec
+    location: Bangalore
+    date_start: '2024-01-04'
+    # date_end: '2027-02-21'
+    description: |2-
+    
   - title: Senior DevOps Engineer
     company: Zetapp (Previously known as Onecode)
     company_url: 'https://zetapp.in/'
