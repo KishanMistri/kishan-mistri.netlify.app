@@ -1,0 +1,50 @@
+{{/* Wowchemy Blocks: Experience */}}
+{{/* Local override: renders the timeline as an alternating left/right */}}
+{{/* "journey" - the connecting curve itself is drawn by custom_js.html, */}}
+{{/* which measures each .timeline-dot's real position so it lines up */}}
+{{/* exactly regardless of how tall each card's content is. */}}
+{{/* Documentation: https://wowchemy.com/blocks/ */}}
+{{/* License: https://github.com/wowchemy/wowchemy-hugo-themes/blob/main/LICENSE.md */}}
+
+{{ $page := .wcPage }}
+{{ $block := .wcBlock }}
+{{ $columns := $block.Params.design.columns | default "2" }}
+
+<!-- Experience widget -->
+<div class="col-12 {{if eq $columns "2"}}col-lg-8{{end}}">
+  {{ with $block.Content }}{{ . }}{{ end }}
+
+  {{ if $block.Params.experience }}
+  {{ $exp_len := len $block.Params.experience }}
+
+  <div class="timeline-journey" data-timeline-journey>
+    <svg class="timeline-journey-curve" aria-hidden="true" data-timeline-curve>
+      <defs>
+        <linearGradient id="timeline-journey-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="var(--sta-primary, currentColor)"></stop>
+          <stop offset="100%" stop-color="var(--sta-accent-gold, currentColor)"></stop>
+        </linearGradient>
+      </defs>
+    </svg>
+
+    {{ range $idx, $key := $block.Params.experience }}
+    {{ $is_right := eq (mod $idx 2) 0 }}
+    <div class="timeline-item {{if $is_right}}timeline-item-right{{else}}timeline-item-left{{end}}">
+
+      <div class="timeline-card-slot timeline-card-slot-left">
+        {{ if not $is_right }}{{ partial "functions/timeline_card" (dict "page" $page "block" $block "exp" . "idx" $idx) }}{{ end }}
+      </div>
+
+      <div class="timeline-spine-slot">
+        <span class="timeline-dot {{if not .date_end}}timeline-dot-current{{end}}" data-timeline-dot aria-hidden="true"></span>
+      </div>
+
+      <div class="timeline-card-slot timeline-card-slot-right">
+        {{ if $is_right }}{{ partial "functions/timeline_card" (dict "page" $page "block" $block "exp" . "idx" $idx) }}{{ end }}
+      </div>
+
+    </div>
+    {{ end }}
+  </div>
+  {{ end }}
+</div>

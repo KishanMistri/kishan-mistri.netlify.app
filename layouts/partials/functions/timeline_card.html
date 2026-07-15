@@ -1,0 +1,47 @@
+{{/* Renders one experience card's content. Shared by the left/right slots */}}
+{{/* in the local `blocks/v1/experience.html` override so the markup is */}}
+{{/* identical either side - only the grid column it's placed in differs. */}}
+
+{{ $block := .block }}
+{{ $exp := .exp }}
+
+<div class="timeline-card card">
+  <div class="card-body">
+
+    {{- if $exp.company_logo}}
+    {{- $svg_icon := resources.Get (printf "media/icons/brands/%s.svg" $exp.company_logo) -}}
+    {{ if not $svg_icon }}{{ errorf "Brand logo not found at `assets/media/icons/brands/%s.svg`" $exp.company_logo }}{{end}}
+    <div class="d-flex align-content-start">
+      <div class="mr-2 mb-2">
+        {{- with $exp.company_url}}<a href="{{.}}" target="_blank" rel="noopener">{{end -}}
+        <img src="{{ $svg_icon.RelPermalink }}" width="56" height="56" alt="{{$exp.company | plainify}}" loading="lazy">
+        {{- with $exp.company_url}}</a>{{end -}}
+      </div>
+      <div>
+    {{ end }}
+
+        <div class="section-subheading card-title exp-title text-muted my-0">{{$exp.title | markdownify | emojify}}</div>
+        <div class="section-subheading card-title exp-company text-muted my-0">
+          {{- with $exp.company_url}}<a href="{{.}}" target="_blank" rel="noopener">{{end}}{{$exp.company | markdownify | emojify}}{{with $exp.company_url}}</a>{{end -}}
+        </div>
+        <div class="text-muted exp-meta">
+          {{ (time $exp.date_start) | time.Format ($block.Params.date_format | default "January 2006") }} –
+          {{ if $exp.date_end}}
+            {{ (time $exp.date_end) | time.Format ($block.Params.date_format | default "January 2006") }}
+          {{else}}
+            {{ i18n "present" | default "Present" }}
+          {{end}}
+          {{with $exp.location}}
+            <span class="middot-divider"></span>
+            <span>{{.}}</span>
+          {{end}}
+        </div>
+
+    {{- if $exp.company_logo}}
+      </div>
+    </div>
+    {{end}}
+
+    {{with $exp.description}}<div class="card-text">{{. | markdownify | emojify}}</div>{{end}}
+  </div>
+</div>
