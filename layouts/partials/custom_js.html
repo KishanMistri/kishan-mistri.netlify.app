@@ -132,6 +132,116 @@
     }
   }
 
+  // Timeline journey: draw a smooth curve through the real (measured)
+  // position of each experience dot, so it lines up whether a role has
+  // one line of description or five - a fixed-geometry SVG couldn't.
+  var journeyContainer = document.querySelector("[data-timeline-journey]");
+  if (journeyContainer) {
+    var journeyDots = journeyContainer.querySelectorAll("[data-timeline-dot]");
+    var journeySvg = journeyContainer.querySelector("[data-timeline-curve]");
+
+    if (journeyDots.length > 1 && journeySvg) {
+      var journeyRevealed = false;
+
+      var drawJourneyCurve = function () {
+        var containerRect = journeyContainer.getBoundingClientRect();
+        var points = [];
+        journeyDots.forEach(function (dot) {
+          var r = dot.getBoundingClientRect();
+          points.push({
+            x: r.left + r.width / 2 - containerRect.left,
+            y: r.top + r.height / 2 - containerRect.top,
+          });
+        });
+
+        journeySvg.setAttribute("width", containerRect.width);
+        journeySvg.setAttribute("height", containerRect.height);
+        journeySvg.setAttribute(
+          "viewBox",
+          "0 0 " + containerRect.width + " " + containerRect.height
+        );
+
+        // The dots themselves sit dead-center (a classic timeline spine),
+        // so a literal dot-to-dot line would just be straight. Bulge each
+        // segment toward whichever side the card it's leading into sits
+        // on, so the spine actually reads as a winding "journey" path.
+        var bulge = Math.min(containerRect.width * 0.22, 90);
+        var d = "M" + points[0].x + "," + points[0].y;
+        for (var i = 1; i < points.length; i++) {
+          var prev = points[i - 1];
+          var curr = points[i];
+          var midY = (prev.y + curr.y) / 2;
+          var bulgeX = curr.x + (i % 2 === 0 ? bulge : -bulge);
+          d +=
+            " C" +
+            bulgeX + "," + midY + " " +
+            bulgeX + "," + midY + " " +
+            curr.x + "," + curr.y;
+        }
+
+        var path = journeySvg.querySelector("path");
+        if (!path) {
+          path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+          journeySvg.appendChild(path);
+        }
+        path.setAttribute("d", d);
+
+        if (prefersReducedMotion) {
+          return;
+        }
+
+        var length = path.getTotalLength();
+        if (!journeyRevealed) {
+          // No transition yet on first paint, so this jump is invisible;
+          // the reveal below turns the transition on and animates to 0.
+          path.style.strokeDasharray = length;
+          path.style.strokeDashoffset = length;
+        } else {
+          // Already revealed (e.g. a resize) - keep it fully drawn,
+          // just retrace the new shape.
+          path.style.strokeDasharray = length;
+          path.style.strokeDashoffset = 0;
+        }
+      };
+
+      drawJourneyCurve();
+
+      var journeyResizeTimer;
+      window.addEventListener("resize", function () {
+        clearTimeout(journeyResizeTimer);
+        journeyResizeTimer = setTimeout(drawJourneyCurve, 150);
+      });
+
+      var revealJourneyCurve = function () {
+        journeyRevealed = true;
+        var path = journeySvg.querySelector("path");
+        if (path) {
+          path.classList.add("is-ready");
+          requestAnimationFrame(function () {
+            path.style.strokeDashoffset = 0;
+          });
+        }
+      };
+
+      if (prefersReducedMotion || !("IntersectionObserver" in window)) {
+        revealJourneyCurve();
+      } else {
+        var journeyObserver = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                revealJourneyCurve();
+                journeyObserver.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.15 }
+        );
+        journeyObserver.observe(journeyContainer);
+      }
+    }
+  }
+
   // Typewriter intro for the profile role/tagline - only when it's plain
   // text (no markdown/emoji markup) so nothing gets stripped out.
   if (!prefersReducedMotion) {
