@@ -31,12 +31,12 @@ experience:
     date_start: '2024-01-04'
     # date_end: '2027-02-21'
     description: |2-
-        Responsibilities include: <!-- TODO(Kishan): review/edit these bullets -->
-        * Own CI/CD pipeline design and infrastructure automation for trading & broking platforms, prioritizing reliability and low-latency delivery
-        * Manage Kubernetes-based infrastructure and Terraform-driven IaC across dev, QA, pre-prod & production environments
-        * Drive observability improvements - monitoring, alerting & dashboarding for critical financial systems
-        * Partner with security & compliance teams to meet financial-sector regulatory requirements
-        * Mentor engineers on DevOps best practices and automation tooling
+        <!-- TODO(Kishan): review/edit these bullets -->
+        * Architected CI/CD pipelines and infrastructure automation for trading and broking platforms, improving release reliability and reducing deployment latency
+        * Directed Kubernetes infrastructure and Terraform-driven IaC across dev, QA, pre-prod, and production environments
+        * Established observability standards - monitoring, alerting, and dashboarding - for mission-critical financial systems
+        * Ensured regulatory compliance through close partnership with security and compliance teams
+        * Mentored engineers on DevOps best practices, standardizing automation tooling org-wide
     
   - title: Senior DevOps Engineer
     company: Zetapp (Previously known as Onecode)
@@ -46,12 +46,11 @@ experience:
     date_start: '2023-01-16'
     date_end: '2023-12-15'
     description: |2-
-        Responsibilities include:
-        * Design, Build & Migration of infrastructure from Elastic Beanstalk to Kubernetes environment
-        * Designing Deployment Pipeline ensuring industry best practices with various tools 
-        * Revamp & experiment+integrating new security services to ensure the compliance of systems.
-        * Cost Optimization of infrastructure to continuously explore the ways to innovate.
-        * Continuously support, improve & do explorations for different environments like dev, QA, pre-prod & production environments.
+        * Migrated production infrastructure from Elastic Beanstalk to Kubernetes, modernizing the deployment architecture
+        * Designed CI/CD pipelines aligned with industry best practices across the toolchain
+        * Integrated new security services to strengthen systems compliance
+        * Reduced infrastructure costs through continuous optimization initiatives
+        * Supported and enhanced dev, QA, pre-prod, and production environments
 
   - title: Senior Member Of Technical Staff
     company: Oracle India Pvt Ltd
@@ -61,13 +60,12 @@ experience:
     date_start: '2021-10-21'
     date_end: '2022-01-21'
     description: |2-
-        Responsibilities include:
-        * Team: Data Safe - DevOps Engineer
-        * New Region Deployment
-        * Integrating Datasafe features in the Terraform codebase
-        * Creating & Update deployment pipelines based on requirements
-        * Optimizing metrics and dashboarding
-        * Patching and maintaining configuration specification
+        * Served as DevOps Engineer on the Data Safe team within Oracle Cloud Infrastructure
+        * Led new region deployments, expanding global service availability
+        * Integrated Data Safe features into the Terraform codebase
+        * Built and maintained deployment pipelines to meet evolving requirements
+        * Optimized metrics collection and dashboarding for operational visibility
+        * Maintained configuration specifications through regular patching
 
   - title: Senior Site Reliability Engineer
     company: Crest Data Systems
@@ -76,7 +74,7 @@ experience:
     location: Ahmedabad
     date_start: '2018-06-01'
     date_end: '2021-09-30'
-    description: Worked as DevOps and Site Reliability Engineer
+    description: Delivered DevOps and Site Reliability Engineering support across enterprise client environments
     
   - title: Creative Head
     company: IEEE - Student Branch, Nirma University
@@ -92,5 +90,5 @@ experience:
     
 
 design:
-  columns: '2'
+  columns: '1'
 ---

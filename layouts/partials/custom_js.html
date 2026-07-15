@@ -164,18 +164,21 @@
         // The dots themselves sit dead-center (a classic timeline spine),
         // so a literal dot-to-dot line would just be straight. Bulge each
         // segment toward whichever side the card it's leading into sits
-        // on, so the spine actually reads as a winding "journey" path.
-        var bulge = Math.min(containerRect.width * 0.22, 90);
+        // on, using two offset control points (rather than one shared
+        // one) so the line flows through each dot as a continuous "S"
+        // instead of a sharp elbow.
+        var bulge = Math.min(containerRect.width * 0.34, 150);
         var d = "M" + points[0].x + "," + points[0].y;
         for (var i = 1; i < points.length; i++) {
           var prev = points[i - 1];
           var curr = points[i];
-          var midY = (prev.y + curr.y) / 2;
           var bulgeX = curr.x + (i % 2 === 0 ? bulge : -bulge);
+          var y1 = prev.y + (curr.y - prev.y) * 0.35;
+          var y2 = prev.y + (curr.y - prev.y) * 0.65;
           d +=
             " C" +
-            bulgeX + "," + midY + " " +
-            bulgeX + "," + midY + " " +
+            bulgeX + "," + y1 + " " +
+            bulgeX + "," + y2 + " " +
             curr.x + "," + curr.y;
         }
 
