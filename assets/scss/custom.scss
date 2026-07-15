@@ -1,18 +1,21 @@
 // Override this file to add your own SCSS styling.
 
 // ------------------------------------------------------------------
-// Dual-tone "rose gold" gradient - the theme's own primary paired with a
-// warm gold accent, used for hover states throughout (nav, links, icons).
+// Dual-tone gradient - the theme's own light rose primary paired with a
+// deeper berry-rose, used for hover states throughout (nav, links,
+// icons). Was paired with a warm gold before; that read as mismatched
+// against the cool rose palette, so this stays in the same hue family
+// (a "sunset rose" gradient) instead of crossing to a different color.
 // ------------------------------------------------------------------
-$sta-accent-gold: #e0b877;
-$sta-duotone-gradient: linear-gradient(135deg, $sta-primary, $sta-accent-gold);
+$sta-accent-rose-deep: #c9518c;
+$sta-duotone-gradient: linear-gradient(135deg, $sta-primary, $sta-accent-rose-deep);
 
 // Bridge the compile-time SCSS colors to runtime CSS custom properties,
 // so plain (non-SCSS) SVG markup - e.g. the timeline curve's gradient
 // stops - and custom_js.html can read the real theme colors too.
 :root {
   --sta-primary: #{$sta-primary};
-  --sta-accent-gold: #{$sta-accent-gold};
+  --sta-accent-rose-deep: #{$sta-accent-rose-deep};
 }
 
 @mixin gradient-underline($height: 2px) {
@@ -21,6 +24,25 @@ $sta-duotone-gradient: linear-gradient(135deg, $sta-primary, $sta-accent-gold);
   background-position: left bottom;
   background-size: 0% $height;
   transition: background-size 0.35s ease;
+}
+
+// ------------------------------------------------------------------
+// Every section heading (About Me, Skills, Experience, Accomplishments,
+// Recent Posts, Projects, Contact) shares one consistent design: same
+// font-family as the rest of the theme (Lora, unchanged) but bolder,
+// with the dual-tone gradient as the signature treatment. This used to
+// be Contact-only, which made it look like a different font/weight
+// from every other heading rather than a deliberate site-wide style.
+// ------------------------------------------------------------------
+.home-section .section-heading h1 {
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  font-weight: 800;
+  line-height: 1.1;
+  background: $sta-duotone-gradient;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
 }
 
 // ------------------------------------------------------------------
@@ -84,9 +106,10 @@ $sta-duotone-gradient: linear-gradient(135deg, $sta-primary, $sta-accent-gold);
   }
 }
 
-// Typewriter cursor for the profile role/tagline (About widget), text is
-// typed in via custom_js.html; this just styles the blinking caret.
-#profile h3:first-of-type.typewriter::after {
+// Typewriter cursor for the profile role and company name (About
+// widget) - text is typed in via custom_js.html, this just styles the
+// blinking caret for whichever one is actively typing.
+#profile h3.typewriter::after {
   content: "|";
   margin-left: 2px;
   animation: typewriter-caret 0.8s step-end infinite;
@@ -299,13 +322,14 @@ $sta-duotone-gradient: linear-gradient(135deg, $sta-primary, $sta-accent-gold);
 // Accomplishments reuse .card.experience, so they inherit the timeline
 // card's richer hover (border glow + lift) instead of the plain default.
 .card.experience {
+  border-radius: 0.85rem;
   transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
   border: 1px solid transparent;
 }
 
 .card.experience:hover {
   border-color: rgba($sta-primary, 0.5);
-  box-shadow: -4px 6px 1.85rem rgba($sta-primary, 0.22), 4px -2px 1.85rem rgba($sta-accent-gold, 0.16);
+  box-shadow: -4px 6px 1.85rem rgba($sta-primary, 0.22), 4px -2px 1.85rem rgba($sta-accent-rose-deep, 0.16);
 
   @media (prefers-reduced-motion: no-preference) {
     transform: translateY(-3px);
@@ -331,7 +355,7 @@ $sta-duotone-gradient: linear-gradient(135deg, $sta-primary, $sta-accent-gold);
 
   &:hover {
     background-color: rgba($sta-primary, 0.06);
-    box-shadow: -3px 3px 1.25rem rgba($sta-primary, 0.18), 3px -3px 1.25rem rgba($sta-accent-gold, 0.14);
+    box-shadow: -3px 3px 1.25rem rgba($sta-primary, 0.18), 3px -3px 1.25rem rgba($sta-accent-rose-deep, 0.14);
 
     @media (prefers-reduced-motion: no-preference) {
       transform: translateX(4px);
@@ -348,6 +372,17 @@ $sta-duotone-gradient: linear-gradient(135deg, $sta-primary, $sta-accent-gold);
 // brighten on hover; a softer treatment for accomplishment/brand logos
 // and profile social icons since those are already full-color images.
 // ------------------------------------------------------------------
+
+// A generic theme rule sets skill names (.section-subheading) to the
+// Lora heading font at 1.25rem, while the description text right below
+// it uses the plain body font - two different typefaces stacked in the
+// same small card. Matching the name to the body font keeps each card
+// visually consistent top to bottom.
+.featurette .section-subheading {
+  font-family: $sta-font-body, sans-serif;
+  font-size: 1.05rem;
+}
+
 .featurette-icon {
   display: inline-flex;
   align-items: center;
@@ -368,21 +403,102 @@ $sta-duotone-gradient: linear-gradient(135deg, $sta-primary, $sta-accent-gold);
   }
 }
 
-.featurette:hover .featurette-icon,
+// Scoped to the individual skill item only (not the whole .featurette
+// row) - a row-level :hover selector here would animate every icon at
+// once whenever the mouse is anywhere over the section, not just the
+// one actually being hovered.
 .col-sm-4:hover .featurette-icon {
   transform: scale(1.08) rotate(-3deg);
   background-position: 100% 100%;
-  box-shadow: 0 0.6rem 1.4rem rgba($sta-primary, 0.35), 0 0 0 4px rgba($sta-accent-gold, 0.18);
+  box-shadow: 0 0.6rem 1.4rem rgba($sta-primary, 0.35), 0 0 0 4px rgba($sta-accent-rose-deep, 0.22);
 }
 
-.network-icon a,
+// Round icon badges (the theme ships these as bare glyphs with no
+// container) with a pronounced "magnifying glass" hover: they scale up
+// more than a typical hover-lift, like the icon is being examined up
+// close, plus the dual-tone gradient fills in behind it.
+.network-icon li:hover {
+  // Cancel the theme's own built-in li-level scale so it doesn't
+  // compound with the a-level magnify below into a much bigger jump
+  // than intended.
+  transform: none;
+}
+
+.network-icon a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  background: rgba($sta-primary, 0.12);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease,
+      background-color 0.3s ease;
+  }
+}
+
 .card.experience .mr-2 img {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .network-icon a:hover {
-  transform: translateY(-3px) scale(1.08);
-  box-shadow: 0 0.4rem 0.9rem rgba(0, 0, 0, 0.18);
+  transform: scale(1.4);
+  background: $sta-duotone-gradient;
+  box-shadow: 0 0.5rem 1.4rem rgba($sta-primary, 0.4);
+
+  i {
+    color: #1a1025;
+  }
+}
+
+// Compact Education entries: the theme's default sizing still wraps
+// long course/institution names onto extra lines within the column
+// it's given. Tighter type plus stacking (borrowed from Interests,
+// which only holds short phrases) fixes both.
+//
+// Scoped to .wg-about, not #profile: #profile only wraps the avatar
+// sidebar column (name/role/social icons) - Interests and Education
+// actually live in the sibling bio column, so #profile never matched
+// either of them at all.
+.wg-about {
+  // Stack Education above Interests, each at full row width - splitting
+  // the row side by side never gave Education enough room to keep its
+  // longer entries (course + institution) on one line each, even after
+  // narrowing Interests and shrinking the type.
+  .row .col-md-5,
+  .row .col-md-7 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .row .col-md-7 {
+    order: -1;
+    margin-bottom: 1.25rem;
+  }
+
+  .ul-edu li {
+    margin-bottom: 0.4rem;
+
+    .description p {
+      line-height: 1.25;
+    }
+
+    .description p.course {
+      font-size: 0.78rem;
+      font-weight: 600;
+      margin-bottom: 0.1rem;
+    }
+
+    .description p.institution {
+      font-size: 0.68rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
 }
 
 // Brand/certification logos (accomplishments + timeline company logos)
@@ -523,6 +639,7 @@ $sta-duotone-gradient: linear-gradient(135deg, $sta-primary, $sta-accent-gold);
 }
 
 .timeline-card {
+  border-radius: 0.85rem;
   transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
   border: 1px solid transparent;
 }
@@ -534,7 +651,7 @@ $sta-duotone-gradient: linear-gradient(135deg, $sta-primary, $sta-accent-gold);
 
 .timeline-item:hover .timeline-card {
   border-color: rgba($sta-primary, 0.5);
-  box-shadow: -4px 6px 1.85rem rgba($sta-primary, 0.22), 4px -2px 1.85rem rgba($sta-accent-gold, 0.16);
+  box-shadow: -4px 6px 1.85rem rgba($sta-primary, 0.22), 4px -2px 1.85rem rgba($sta-accent-rose-deep, 0.16);
 
   @media (prefers-reduced-motion: no-preference) {
     transform: translateY(-3px);
@@ -573,17 +690,6 @@ $sta-duotone-gradient: linear-gradient(135deg, $sta-primary, $sta-accent-gold);
 // flex `order` puts the tag collage above the form visually.
 // ------------------------------------------------------------------
 .wg-contact {
-  .section-heading h1 {
-    font-size: clamp(2.5rem, 6vw, 4.25rem);
-    font-weight: 800;
-    line-height: 1.05;
-    background: $sta-duotone-gradient;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    display: inline-block;
-  }
-
   .section-heading p {
     font-size: 1.15rem;
     opacity: 0.85;
@@ -650,8 +756,8 @@ $sta-duotone-gradient: linear-gradient(135deg, $sta-primary, $sta-accent-gold);
 
   .fa-ul li:nth-child(4n + 3) {
     background: transparent;
-    border: 2px solid $sta-accent-gold;
-    color: $sta-accent-gold;
+    border: 2px solid $sta-accent-rose-deep;
+    color: $sta-accent-rose-deep;
 
     @media (prefers-reduced-motion: no-preference) {
       transform: rotate(-2deg);
@@ -905,61 +1011,90 @@ $sta-duotone-gradient: linear-gradient(135deg, $sta-primary, $sta-accent-gold);
 // ------------------------------------------------------------------
 // Project cards: zoom the image and reveal a dual-tone overlay + "view
 // project" cue on hover, replacing the theme's plain white overlay.
+//
+// Correction: this was previously written against views/masonry.html's
+// `.card` / `.card-image.hover-overlay` markup, but content/home/
+// projects.md sets `design.view: 3`, which Hugo's numeric legacy-view
+// mapping resolves to views/card.html instead - a different template
+// with `.card-simple` / `.img-hover-zoom` / `.article-banner` markup.
+// None of the rules below ever matched a real element on this site.
+// Confirmed the actual classes directly from the built HTML this time
+// instead of assuming the view template.
 // ------------------------------------------------------------------
-.wg-portfolio,
-.wg-collection {
-  .card-image {
-    display: block;
-    overflow: hidden;
-    border-radius: 0.25rem 0.25rem 0 0;
-
-    img {
-      transition: transform 0.5s ease;
-    }
-  }
-
-  .card:hover .card-image img {
-    transform: scale(1.08);
-  }
-
-  // Same border-glow the timeline/accomplishments cards get, on top of
-  // the image zoom above, so every card type on the site feels like one
-  // consistent design system rather than several different treatments.
-  .card {
+.wg-portfolio {
+  .card-simple {
+    position: relative;
+    border-radius: 0.75rem;
     border: 1px solid transparent;
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
   }
 
-  .card:hover {
+  .card-simple:hover {
     border-color: rgba($sta-primary, 0.5);
-    box-shadow: -4px 6px 1.85rem rgba($sta-primary, 0.22), 4px -2px 1.85rem rgba($sta-accent-gold, 0.16);
+    box-shadow: -4px 6px 1.85rem rgba($sta-primary, 0.22), 4px -2px 1.85rem rgba($sta-accent-rose-deep, 0.16);
+
+    @media (prefers-reduced-motion: no-preference) {
+      transform: translateY(-3px);
+    }
   }
 
-  .card-image.hover-overlay::before {
-    background-image: $sta-duotone-gradient;
-    opacity: 0;
-    transition: opacity 0.35s ease;
+  .img-hover-zoom {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    border-radius: 0.5rem;
+
+    img {
+      transition: transform 0.5s ease;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: $sta-duotone-gradient;
+      opacity: 0;
+      transition: opacity 0.35s ease;
+      z-index: 1;
+    }
+
+    &::after {
+      content: "View project";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, calc(-50% + 8px));
+      font-weight: 600;
+      font-size: 1rem;
+      letter-spacing: 0.04em;
+      color: #fff;
+      text-transform: uppercase;
+      opacity: 0;
+      transition: opacity 0.35s ease, transform 0.35s ease;
+      z-index: 2;
+      pointer-events: none;
+    }
   }
 
-  .card-image.hover-overlay::after {
-    content: "View project";
-    font-family: inherit;
-    font-weight: 600;
-    font-size: 1rem;
-    letter-spacing: 0.04em;
-    color: #fff;
-    text-transform: uppercase;
-    opacity: 0;
-    transform: translate(0, 8px);
-    transition: opacity 0.35s ease, transform 0.35s ease;
+  .card-simple:hover .img-hover-zoom img {
+    transform: scale(1.08);
   }
 
-  .card:hover .card-image.hover-overlay::before {
+  .card-simple:hover .img-hover-zoom::before {
     opacity: 0.82;
   }
 
-  .card:hover .card-image.hover-overlay::after {
+  .card-simple:hover .img-hover-zoom::after {
     opacity: 1;
-    transform: translate(0, -50%);
+    transform: translate(-50%, -50%);
+  }
+
+  .article-title a {
+    @include gradient-underline;
+    padding-bottom: 2px;
+  }
+
+  .card-simple:hover .article-title a {
+    background-size: 100% 2px;
   }
 }

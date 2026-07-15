@@ -32,11 +32,11 @@ experience:
     # date_end: '2027-02-21'
     description: |2-
         <!-- TODO(Kishan): review/edit these bullets -->
-        * Architected CI/CD pipelines and infrastructure automation for trading and broking platforms, improving release reliability and reducing deployment latency
-        * Directed Kubernetes infrastructure and Terraform-driven IaC across dev, QA, pre-prod, and production environments
-        * Established observability standards - monitoring, alerting, and dashboarding - for mission-critical financial systems
-        * Ensured regulatory compliance through close partnership with security and compliance teams
-        * Mentored engineers on DevOps best practices, standardizing automation tooling org-wide
+        * Design and run the CI/CD pipelines that ship code to HDFC Securities' trading and broking platforms, where both downtime and slow releases carry real cost
+        * Manage Kubernetes clusters and Terraform-based infrastructure-as-code, keeping dev, QA, pre-prod, and production environments consistent and reproducible
+        * Build monitoring, alerting, and dashboards that catch problems early on systems people actively trade on
+        * Partner closely with security and compliance teams to keep infrastructure changes aligned with financial-sector regulations
+        * Mentor engineers on DevOps practices and help standardize the automation tooling the team relies on
     
   - title: Senior DevOps Engineer
     company: Zetapp (Previously known as Onecode)
@@ -46,11 +46,11 @@ experience:
     date_start: '2023-01-16'
     date_end: '2023-12-15'
     description: |2-
-        * Migrated production infrastructure from Elastic Beanstalk to Kubernetes, modernizing the deployment architecture
-        * Designed CI/CD pipelines aligned with industry best practices across the toolchain
-        * Integrated new security services to strengthen systems compliance
-        * Reduced infrastructure costs through continuous optimization initiatives
-        * Supported and enhanced dev, QA, pre-prod, and production environments
+        * Led the migration of production infrastructure from AWS Elastic Beanstalk to Kubernetes, modernizing how the company deploys and scales its applications
+        * Designed CI/CD pipelines that brought consistency and industry best practices to a previously ad hoc release process
+        * Rolled out new security tooling to close compliance gaps across the infrastructure
+        * Cut infrastructure costs by continuously right-sizing cloud resources
+        * Kept dev, QA, pre-prod, and production environments running smoothly through hands-on support and steady improvements
 
   - title: Senior Member of Technical Staff
     company: Oracle India Pvt Ltd
@@ -60,12 +60,12 @@ experience:
     date_start: '2021-10-21'
     date_end: '2022-01-21'
     description: |2-
-        * Served as DevOps Engineer on the Data Safe team within Oracle Cloud Infrastructure
-        * Led new region deployments, expanding global service availability
-        * Integrated Data Safe features into the Terraform codebase
-        * Built and maintained deployment pipelines to meet evolving requirements
-        * Optimized metrics collection and dashboarding for operational visibility
-        * Maintained configuration specifications through regular patching
+        * Worked as the DevOps engineer on Oracle Cloud Infrastructure's Data Safe team, a security and data-protection product used across Oracle's cloud
+        * Helped launch Data Safe in new geographic regions, expanding where the service could run
+        * Extended the team's Terraform codebase to support new Data Safe features as they shipped
+        * Built and maintained the deployment pipelines used to ship changes safely
+        * Set up metrics and dashboards that gave the team visibility into how the service was performing in production
+        * Kept systems current and compliant through regular patching and configuration maintenance
 
   - title: Senior Site Reliability Engineer
     company: Crest Data Systems
@@ -74,7 +74,7 @@ experience:
     location: Ahmedabad
     date_start: '2018-06-01'
     date_end: '2021-09-30'
-    description: Delivered DevOps and Site Reliability Engineering support across enterprise client environments
+    description: Provided DevOps and Site Reliability Engineering support for enterprise clients, keeping their production systems reliable and their release processes moving
     
   - title: Creative Head
     company: IEEE - Student Branch, Nirma University

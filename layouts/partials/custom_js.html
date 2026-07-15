@@ -6,13 +6,25 @@
     window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   var profileNameEl = document.querySelector("#profile h2");
-  var profileRoleEl = document.querySelector("#profile h3");
+  var profileHeadingEls = document.querySelectorAll("#profile h3");
+  var profileRoleEl = profileHeadingEls[0];
+  var profileCompanyEl = profileHeadingEls[1];
+
+  // Typewriter timing needs to know when (if at all) the intro veil will
+  // have finished dismissing, so the role/company typing starts after the
+  // opening animation instead of racing ahead of it and finishing while
+  // still hidden underneath the veil.
+  var veilDismissDelay = 0;
 
   // Brief branded intro on first visit to the homepage this session. Always
   // auto-dismisses on a timer (and on click) - it never gates on real asset
   // loading, so unlike heavier 3D intros it can't get stuck on screen.
   if (!prefersReducedMotion && profileNameEl && !sessionStorage.getItem("wc-intro-shown")) {
     sessionStorage.setItem("wc-intro-shown", "1");
+
+    var veilShowDelay = 1100;
+    var veilFadeDuration = 450;
+    veilDismissDelay = veilShowDelay + veilFadeDuration;
 
     var veil = document.createElement("div");
     veil.className = "intro-veil";
@@ -36,10 +48,10 @@
       veil.classList.add("intro-veil--out");
       setTimeout(function () {
         veil.remove();
-      }, 450);
+      }, veilFadeDuration);
     };
     veil.addEventListener("click", dismissIntro);
-    setTimeout(dismissIntro, 1100);
+    setTimeout(dismissIntro, veilShowDelay);
   }
 
   // Mark each home section, plus its cards/timeline rows, as reveal targets
@@ -220,19 +232,26 @@
       // Scroll-linked draw: the path traces itself from the newest role
       // down to the oldest as you scroll through the section, like
       // walking the route from one company to the next, rather than
-      // just snapping fully-drawn into view once.
+      // just snapping fully-drawn into view once. Progress only ever
+      // moves forward - the short last entry (no description) used to
+      // have its segment of the line un-draw itself if you scrolled
+      // back up even slightly, since it never had much scroll distance
+      // to "hold" its drawn state. Tracking the max progress reached
+      // means once a segment has been shown, it stays shown.
+      var journeyMaxProgress = 0;
       var updateJourneyProgress = function () {
         if (!journeyPathLength) {
           return;
         }
         var rect = journeyContainer.getBoundingClientRect();
         var vh = window.innerHeight;
-        var total = rect.height + vh * 0.6;
+        var total = rect.height + vh * 0.3;
         var scrolled = vh * 0.8 - rect.top;
         var progress = Math.min(1, Math.max(0, scrolled / total));
+        journeyMaxProgress = Math.max(journeyMaxProgress, progress);
         var path = journeySvg.querySelector("path");
         if (path) {
-          path.style.strokeDashoffset = journeyPathLength * (1 - progress);
+          path.style.strokeDashoffset = journeyPathLength * (1 - journeyMaxProgress);
         }
       };
 
@@ -270,29 +289,59 @@
     }
   }
 
-  // Typewriter intro for the profile role/tagline - only when it's plain
-  // text (no markdown/emoji markup) so nothing gets stripped out.
+  // Typewriter for the role and, after it finishes, the company name -
+  // both wait for the intro veil to fully dismiss first (see
+  // veilDismissDelay above) so the typing is actually visible instead of
+  // finishing underneath the veil before it even fades out.
   if (!prefersReducedMotion) {
-    var isPlainText = profileRoleEl && profileRoleEl.childElementCount === 0;
-    if (isPlainText) {
-      var fullText = profileRoleEl.textContent.trim();
-      if (fullText) {
-        profileRoleEl.textContent = "";
-        profileRoleEl.classList.add("typewriter");
-        var i = 0;
-        (function type() {
-          if (i <= fullText.length) {
-            profileRoleEl.textContent = fullText.slice(0, i);
-            i++;
-            setTimeout(type, 45);
-          } else {
-            setTimeout(function () {
-              profileRoleEl.classList.remove("typewriter");
-            }, 1400);
-          }
-        })();
+    var typeInto = function (el, onDone) {
+      // Company name may be wrapped in an <a><span> (when it links out);
+      // type into that text-holding node specifically so the link itself
+      // - and anything else structural - stays intact.
+      var textEl = el.querySelector("span") || el;
+      if (textEl.childElementCount > 0) {
+        if (onDone) {
+          onDone();
+        }
+        return; // unexpected markup inside - leave it alone rather than mangle it
       }
-    }
+      var fullText = textEl.textContent.trim();
+      if (!fullText) {
+        if (onDone) {
+          onDone();
+        }
+        return;
+      }
+      textEl.textContent = "";
+      el.classList.add("typewriter");
+      var i = 0;
+      (function type() {
+        if (i <= fullText.length) {
+          textEl.textContent = fullText.slice(0, i);
+          i++;
+          setTimeout(type, 45);
+        } else {
+          setTimeout(function () {
+            el.classList.remove("typewriter");
+            if (onDone) {
+              onDone();
+            }
+          }, 700);
+        }
+      })();
+    };
+
+    setTimeout(function () {
+      if (profileRoleEl) {
+        typeInto(profileRoleEl, function () {
+          if (profileCompanyEl) {
+            typeInto(profileCompanyEl);
+          }
+        });
+      } else if (profileCompanyEl) {
+        typeInto(profileCompanyEl);
+      }
+    }, veilDismissDelay);
   }
 
   // Contact form: flash the round Send button green for a valid
