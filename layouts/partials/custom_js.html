@@ -5,6 +5,43 @@
   var prefersReducedMotion =
     window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  var profileNameEl = document.querySelector("#profile h2");
+  var profileRoleEl = document.querySelector("#profile h3");
+
+  // Brief branded intro on first visit to the homepage this session. Always
+  // auto-dismisses on a timer (and on click) - it never gates on real asset
+  // loading, so unlike heavier 3D intros it can't get stuck on screen.
+  if (!prefersReducedMotion && profileNameEl && !sessionStorage.getItem("wc-intro-shown")) {
+    sessionStorage.setItem("wc-intro-shown", "1");
+
+    var veil = document.createElement("div");
+    veil.className = "intro-veil";
+    veil.setAttribute("aria-hidden", "true");
+
+    var textWrap = document.createElement("div");
+    textWrap.className = "intro-veil-text";
+    textWrap.textContent = profileNameEl.textContent.trim();
+
+    if (profileRoleEl) {
+      var roleSpan = document.createElement("span");
+      roleSpan.className = "intro-veil-role";
+      roleSpan.textContent = profileRoleEl.textContent.trim();
+      textWrap.appendChild(roleSpan);
+    }
+
+    veil.appendChild(textWrap);
+    document.body.appendChild(veil);
+
+    var dismissIntro = function () {
+      veil.classList.add("intro-veil--out");
+      setTimeout(function () {
+        veil.remove();
+      }, 450);
+    };
+    veil.addEventListener("click", dismissIntro);
+    setTimeout(dismissIntro, 1100);
+  }
+
   // Mark each home section, plus its cards/timeline rows, as reveal targets
   // so the profile reads like a story unfolding as you scroll, not a wall of text.
   document.querySelectorAll(".home-section").forEach(function (section) {
@@ -19,41 +56,100 @@
       el.classList.add("is-visible");
     });
   } else {
-    var observer = new IntersectionObserver(
+    var revealObserver = new IntersectionObserver(
       function (entries) {
         entries.forEach(function (entry) {
           if (entry.isIntersecting) {
             entry.target.classList.add("is-visible");
-            observer.unobserve(entry.target);
+            revealObserver.unobserve(entry.target);
           }
         });
       },
       { threshold: 0.15, rootMargin: "0px 0px -60px 0px" }
     );
     document.querySelectorAll(".reveal-on-scroll").forEach(function (el) {
-      observer.observe(el);
+      revealObserver.observe(el);
     });
+  }
+
+  // Chapter navigation: a small fixed map of the homepage sections so
+  // visitors can jump around non-linearly, echoing an "explorable hub"
+  // feel without any 3D/WebGL. Built dynamically so it stays in sync
+  // with whatever sections actually exist on the page.
+  var sections = document.querySelectorAll(".home-section[id]");
+  if (sections.length > 1) {
+    var nav = document.createElement("nav");
+    nav.className = "chapter-nav";
+    nav.setAttribute("aria-label", "Section navigation");
+
+    var dotForId = {};
+    sections.forEach(function (section) {
+      var headingEl = section.querySelector(".section-heading h1");
+      var label = headingEl
+        ? headingEl.textContent.trim()
+        : section.id.charAt(0).toUpperCase() + section.id.slice(1);
+
+      var link = document.createElement("a");
+      link.className = "chapter-dot";
+      link.href = "#" + section.id;
+      link.setAttribute("aria-label", label);
+
+      var tip = document.createElement("span");
+      tip.className = "chapter-dot-label";
+      tip.textContent = label;
+      link.appendChild(tip);
+
+      nav.appendChild(link);
+      dotForId[section.id] = link;
+    });
+
+    document.body.appendChild(nav);
+
+    if ("IntersectionObserver" in window) {
+      var visibleRatios = {};
+      var chapterObserver = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            visibleRatios[entry.target.id] = entry.intersectionRatio;
+          });
+          var bestId = null;
+          var bestRatio = 0;
+          Object.keys(visibleRatios).forEach(function (id) {
+            if (visibleRatios[id] > bestRatio) {
+              bestRatio = visibleRatios[id];
+              bestId = id;
+            }
+          });
+          Object.keys(dotForId).forEach(function (id) {
+            dotForId[id].classList.toggle("is-active", id === bestId);
+          });
+        },
+        { threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1] }
+      );
+      sections.forEach(function (section) {
+        chapterObserver.observe(section);
+      });
+    }
   }
 
   // Typewriter intro for the profile role/tagline - only when it's plain
   // text (no markdown/emoji markup) so nothing gets stripped out.
   if (!prefersReducedMotion) {
-    var roleEl = document.querySelector("#profile h3");
-    var isPlainText = roleEl && roleEl.childElementCount === 0;
+    var isPlainText = profileRoleEl && profileRoleEl.childElementCount === 0;
     if (isPlainText) {
-      var fullText = roleEl.textContent.trim();
+      var fullText = profileRoleEl.textContent.trim();
       if (fullText) {
-        roleEl.textContent = "";
-        roleEl.classList.add("typewriter");
+        profileRoleEl.textContent = "";
+        profileRoleEl.classList.add("typewriter");
         var i = 0;
         (function type() {
           if (i <= fullText.length) {
-            roleEl.textContent = fullText.slice(0, i);
+            profileRoleEl.textContent = fullText.slice(0, i);
             i++;
             setTimeout(type, 45);
           } else {
             setTimeout(function () {
-              roleEl.classList.remove("typewriter");
+              profileRoleEl.classList.remove("typewriter");
             }, 1400);
           }
         })();
