@@ -34,7 +34,14 @@ $sta-duotone-gradient: linear-gradient(135deg, $sta-primary, $sta-accent-rose-de
 // be Contact-only, which made it look like a different font/weight
 // from every other heading rather than a deliberate site-wide style.
 // ------------------------------------------------------------------
-.home-section .section-heading h1 {
+// About Me's h1 doesn't get the .section-heading wrapper other widgets
+// do - "about" isn't in the theme's $use_cols list, so
+// parse_block_v1.html skips rendering that wrapper entirely and the
+// About widget's own template (about.biography.html) renders a bare
+// <h1> instead. Targeting it directly here so it still picks up the
+// same design as every other section heading.
+.home-section .section-heading h1,
+.wg-about h1 {
   font-size: clamp(2rem, 5vw, 3.25rem);
   font-weight: 800;
   line-height: 1.1;
@@ -413,6 +420,21 @@ $sta-duotone-gradient: linear-gradient(135deg, $sta-primary, $sta-accent-rose-de
   box-shadow: 0 0.6rem 1.4rem rgba($sta-primary, 0.35), 0 0 0 4px rgba($sta-accent-rose-deep, 0.22);
 }
 
+// The theme lays these out with inline-flex + wrap, which reflows
+// unpredictably depending on available width (5 icons on one line then
+// 1 stranded alone, etc). A fixed 3-per-row grid keeps it as a clean
+// 3x2 block regardless of container width.
+ul.network-icon {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 0.6rem;
+  justify-content: center;
+}
+
+.network-icon li {
+  margin-right: 0;
+}
+
 // Round icon badges (the theme ships these as bare glyphs with no
 // container) with a pronounced "magnifying glass" hover: they scale up
 // more than a typical hover-lift, like the icon is being examined up
@@ -454,29 +476,34 @@ $sta-duotone-gradient: linear-gradient(135deg, $sta-primary, $sta-accent-rose-de
   }
 }
 
-// Compact Education entries: the theme's default sizing still wraps
-// long course/institution names onto extra lines within the column
-// it's given. Tighter type plus stacking (borrowed from Interests,
-// which only holds short phrases) fixes both.
+// Compact Education entries, kept side by side with Interests: the
+// theme's default sizing wraps long course/institution names onto
+// extra lines within the column it's given. Narrowing Interests (its
+// content is only ever a short phrase, so it tolerates a tighter
+// column better) and shrinking both columns' type keeps everything on
+// one line each while preserving the side-by-side layout.
 //
 // Scoped to .wg-about, not #profile: #profile only wraps the avatar
 // sidebar column (name/role/social icons) - Interests and Education
 // actually live in the sibling bio column, so #profile never matched
-// either of them at all.
+// either of them at all. (An earlier pass here was scoped to #profile
+// and silently did nothing for that reason.)
 .wg-about {
-  // Stack Education above Interests, each at full row width - splitting
-  // the row side by side never gave Education enough room to keep its
-  // longer entries (course + institution) on one line each, even after
-  // narrowing Interests and shrinking the type.
-  .row .col-md-5,
-  .row .col-md-7 {
-    flex: 0 0 100%;
-    max-width: 100%;
+  @media (min-width: 768px) {
+    .row .col-md-5 {
+      flex: 0 0 30%;
+      max-width: 30%;
+    }
+
+    .row .col-md-7 {
+      flex: 0 0 70%;
+      max-width: 70%;
+    }
   }
 
-  .row .col-md-7 {
-    order: -1;
-    margin-bottom: 1.25rem;
+  .ul-interests li {
+    font-size: 0.82rem;
+    margin-bottom: 0.3rem;
   }
 
   .ul-edu li {
