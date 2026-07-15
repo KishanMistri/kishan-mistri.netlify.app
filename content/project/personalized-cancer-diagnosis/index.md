@@ -1,6 +1,6 @@
 ---
 draft: false
-slides: example
+slides: ""
 url_pdf: ""
 title: Personalized Cancer Diagnosis
 subtitle: Classify the 9 cancer classes from text and categorical data.
