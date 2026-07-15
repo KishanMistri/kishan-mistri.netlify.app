@@ -87,7 +87,7 @@
     // this list doesn't know about.
     var sectionIcons = {
       about: "user",
-      skills: "toolbox",
+      skills: "code",
       experience: "briefcase",
       accomplishments: "trophy",
       posts: "newspaper",
@@ -293,6 +293,26 @@
         })();
       }
     }
+  }
+
+  // Contact form: flash the round Send button green for a valid
+  // submission or orange if a required field is missing, on top of
+  // the browser's own native validation messages (not a replacement
+  // for them - just a faster visual cue at the button itself).
+  var contactForm = document.querySelector(".wg-contact form");
+  var sendButton = contactForm && contactForm.querySelector('button[type="submit"]');
+  if (contactForm && sendButton) {
+    sendButton.addEventListener("click", function () {
+      sendButton.classList.remove("btn-state-success", "btn-state-error");
+      if (contactForm.checkValidity()) {
+        sendButton.classList.add("btn-state-success");
+      } else {
+        sendButton.classList.add("btn-state-error");
+        setTimeout(function () {
+          sendButton.classList.remove("btn-state-error");
+        }, 1600);
+      }
+    });
   }
 })();
 </script>
