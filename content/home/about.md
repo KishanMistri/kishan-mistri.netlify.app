@@ -3,7 +3,7 @@ widget: about
 widget_id: about-home-widget
 headless: true
 weight: 20
-title: About me..!
+title: About Me
 active: true
 author: admin
 ---

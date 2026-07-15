@@ -24,7 +24,7 @@ image:
   filename: featured.jpg
 url_code: ""
 ---
-From the expert, the time to diagnosis of cancer takes a lot of time as it includes new studies/papers, which makes this a time-consuming and exhaustive process. With machine learning, we can fast-track the majority of scenarios and help the expert get updated details.
+According to experts, diagnosing cancer takes a long time because it involves reviewing new studies and papers, making it a time-consuming and exhaustive process. With machine learning, we can fast-track the majority of scenarios and help experts get updated details faster.
 
 I have used below classical machine learning algorithms for the problem.
 
@@ -42,9 +42,9 @@ I have used below classical machine learning algorithms for the problem.
 
 7: MaxVoting Classifier (Ensemble)
 
-As you might know, these algorithms have their limitation and advantages, I have tried to incorporate the best use of them by remediating the problems. Like
+As you might know, these algorithms have their own limitations and advantages; I have tried to make the best use of them by addressing their shortcomings:
 
 * The curse of dimensionality has been addressed by Response Coding.
 * Class imbalance can be tuned with stratified splits and using the Class weight parameter whenever exploitable.
-* Compute intensive Hyper-Tuning with parallelism when needed.
-* At last, the beautiful interface & ton of integration of streamlit used.
+* Compute-intensive Hyper-Tuning with parallelism when needed.
+* Finally, Streamlit's clean interface and extensive integrations were used to build the demo.

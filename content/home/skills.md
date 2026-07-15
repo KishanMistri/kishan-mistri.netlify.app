@@ -23,11 +23,11 @@ feature:
   - icon: cloud
     icon_pack: fas
     name: Clouds
-    description: Designing & deploying automated solution on Cloud Provider Primarily on AWS, Oracle
+    description: Designing & deploying automated solutions on cloud providers, primarily AWS and Oracle
   - icon: docker
     icon_pack: fab
     name: Containerization
-    description: Developing , deploying and managing containers and having exposure to container orchastrators like Kubernetes & Swarm.
+    description: Developing, deploying, and managing containers, with exposure to container orchestrators like Kubernetes & Swarm.
   - icon: brain
     icon_pack: fas
     name: Deep Learning
@@ -40,7 +40,7 @@ feature:
   - icon: object-group
     icon_pack: fas
     name: System Design
-    description: Designing & deploying automated solution on Cloud Provider Primarily on AWS
+    description: Designing & deploying automated solutions on cloud providers, primarily AWS
   - icon: hiking
     icon_pack: fas
     name: Trekking

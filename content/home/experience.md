@@ -52,7 +52,7 @@ experience:
         * Reduced infrastructure costs through continuous optimization initiatives
         * Supported and enhanced dev, QA, pre-prod, and production environments
 
-  - title: Senior Member Of Technical Staff
+  - title: Senior Member of Technical Staff
     company: Oracle India Pvt Ltd
     company_url: 'https://www.oracle.com/in/corporate/'
     company_logo: org-oracle
