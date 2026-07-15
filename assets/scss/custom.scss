@@ -1,0 +1,111 @@
+// Override this file to add your own SCSS styling.
+
+// ------------------------------------------------------------------
+// Storytelling: scroll-reveal, timeline, and micro-interaction polish
+// Kept subtle on purpose - fades/slides only, no bounce or parallax.
+// ------------------------------------------------------------------
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  // Generic scroll-reveal, applied by custom_js.html to each home-section
+  // and to card/timeline children within it for a staggered entrance.
+  .reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+  }
+
+  .reveal-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  // Stagger direct card/timeline-row children once their section is revealed.
+  .home-section.is-visible .reveal-child {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reveal-child {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  @for $i from 1 through 12 {
+    .reveal-child:nth-child(#{$i}) {
+      transition-delay: #{$i * 0.08}s;
+    }
+  }
+
+  // Gentle hover lift for cards site-wide (projects, posts, experience).
+  .card {
+    transition: transform 0.25s ease-out, box-shadow 0.25s ease-out;
+  }
+
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.1);
+  }
+}
+
+// Career timeline (Experience widget): animated connecting line + a
+// pulsing marker on the current role. These are static/instant for
+// users who prefer reduced motion.
+.wg-experience {
+  .experience .border-right {
+    position: relative;
+    overflow: hidden;
+
+    @media (prefers-reduced-motion: no-preference) {
+      &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: currentColor;
+        transform: scaleY(0);
+        transform-origin: top;
+        transition: transform 0.9s ease-out;
+      }
+    }
+  }
+
+  .home-section.is-visible .experience .border-right::after {
+    transform: scaleY(1);
+  }
+
+  .badge.exp-fill {
+    background-color: $sta-primary;
+    border-color: $sta-primary !important;
+
+    @media (prefers-reduced-motion: no-preference) {
+      animation: exp-current-pulse 2.2s ease-in-out infinite;
+    }
+  }
+}
+
+@keyframes exp-current-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba($sta-primary, 0.35);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba($sta-primary, 0);
+  }
+}
+
+// Typewriter cursor for the profile role/tagline (About widget), text is
+// typed in via custom_js.html; this just styles the blinking caret.
+#profile h3:first-of-type.typewriter::after {
+  content: "|";
+  margin-left: 2px;
+  animation: typewriter-caret 0.8s step-end infinite;
+}
+
+@keyframes typewriter-caret {
+  50% {
+    opacity: 0;
+  }
+}

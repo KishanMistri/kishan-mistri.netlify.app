@@ -1,0 +1,64 @@
+<script>
+(function () {
+  "use strict";
+
+  var prefersReducedMotion =
+    window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // Mark each home section, plus its cards/timeline rows, as reveal targets
+  // so the profile reads like a story unfolding as you scroll, not a wall of text.
+  document.querySelectorAll(".home-section").forEach(function (section) {
+    section.classList.add("reveal-on-scroll");
+    section.querySelectorAll(".card, .row.experience").forEach(function (child) {
+      child.classList.add("reveal-child");
+    });
+  });
+
+  if (prefersReducedMotion || !("IntersectionObserver" in window)) {
+    document.querySelectorAll(".reveal-on-scroll, .reveal-child").forEach(function (el) {
+      el.classList.add("is-visible");
+    });
+  } else {
+    var observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15, rootMargin: "0px 0px -60px 0px" }
+    );
+    document.querySelectorAll(".reveal-on-scroll").forEach(function (el) {
+      observer.observe(el);
+    });
+  }
+
+  // Typewriter intro for the profile role/tagline - only when it's plain
+  // text (no markdown/emoji markup) so nothing gets stripped out.
+  if (!prefersReducedMotion) {
+    var roleEl = document.querySelector("#profile h3");
+    var isPlainText = roleEl && roleEl.childElementCount === 0;
+    if (isPlainText) {
+      var fullText = roleEl.textContent.trim();
+      if (fullText) {
+        roleEl.textContent = "";
+        roleEl.classList.add("typewriter");
+        var i = 0;
+        (function type() {
+          if (i <= fullText.length) {
+            roleEl.textContent = fullText.slice(0, i);
+            i++;
+            setTimeout(type, 45);
+          } else {
+            setTimeout(function () {
+              roleEl.classList.remove("typewriter");
+            }, 1400);
+          }
+        })();
+      }
+    }
+  }
+})();
+</script>
