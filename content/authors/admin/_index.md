@@ -56,8 +56,8 @@ email: kishan.mistri.111@gmail.com
 superuser: true
 highlight_name: true
 ---
-I am currently working as a Senior DevOps Engineer at HDFC Securities in Bangalore, India, with a total of 7+ years of professional experience in Big Data and Data Analytics. My software engineering journey spans roles as an SRE, a Splunk Admin, and a Consultant, before transitioning into a DevOps Engineer automating system processes. I have also completed a Post Graduate Diploma in Applied Machine Learning with the University of Hyderabad to explore the Data Science domain out of passion.
+My path into DevOps wasn't a straight line. It began in the trenches as a Site Reliability Engineer, wound through Splunk administration and consulting, and eventually led me to the role I love most — a DevOps Engineer automating the very systems I used to firefight by hand. Today, that journey spans 7+ years and has brought me to HDFC Securities in Bangalore, where I build and scale the infrastructure behind trading and broking platforms. Along the way, I couldn't resist a detour into Machine Learning, picking up a Post Graduate Diploma from the University of Hyderabad — because I've always been as curious about the data flowing through a system as the system itself.
 
 💬 I am happy to help. Ask me about anything.
 
-{{< icon name="download" pack="fas" >}} Download my {{< staticref "uploads/resume-kmistri.pdf" "newtab" >}}resume{{< /staticref >}}.
+{{< icon name="download" pack="fas" >}} {{< staticref "uploads/resume-kmistri.pdf" "newtab" >}}Get my resume{{< /staticref >}}.
