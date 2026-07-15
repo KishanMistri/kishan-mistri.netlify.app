@@ -1,5 +1,5 @@
 ---
-slides: example
+slides: ""
 url_pdf: ""
 date: 2022-04-04T09:45:37.997Z
 summary: Walmart Unit Sales Forecasting for the next 28 days

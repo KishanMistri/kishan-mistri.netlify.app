@@ -13,7 +13,7 @@ image:
   focal_point: Smart
   preview_only: false
 ---
-![Atomic Habits](https://jamesclear.com/wp-content/uploads/2019/02/atomic-habits_gallery_hi-res_04.jpg "Atomic Habits")
+![Atomic Habits](atomic-habits-cover.jpg "Atomic Habits")
 
 #### Chapter - 1 - Introduction to Atomic Habits
 

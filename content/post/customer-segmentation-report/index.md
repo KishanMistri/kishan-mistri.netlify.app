@@ -8,7 +8,7 @@ tags:
 categories:
   - EDA
 image:
-  filename: https://researchamericainc.com/_img/segmentation-illustration.png
+  filename: featured.png
   focal_point: Smart
   preview_only: false
   caption: customer segmentation banner caption
