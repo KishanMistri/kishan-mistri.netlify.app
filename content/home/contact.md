@@ -9,7 +9,7 @@ headless: true
 weight: 90
 
 title: Contact
-subtitle:
+subtitle: How can I help?
 
 content:
   # Automatically link email and phone or display as text?
@@ -29,7 +29,7 @@ content:
 #  phone: 888 888 88 88
   address:
     city: Ahmedabad
-    region: Gujarata
+    region: Gujarat
     postcode: '382424'
     country: India
     country_code: IN
@@ -61,5 +61,6 @@ content:
 #      link: 'https://zoom.com'
 
 design:
-  columns: '2'
+  columns: '1'
 ---
+Got a project, a question, or just want to say hi? Pick your favorite way to reach me, or send a message below.
