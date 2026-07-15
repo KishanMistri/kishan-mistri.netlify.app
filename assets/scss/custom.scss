@@ -118,6 +118,14 @@ $sta-duotone-gradient: linear-gradient(135deg, $sta-primary, $sta-accent-gold);
     display: none;
   }
 
+  // Reserve room so the active dot's auto-shown name label doesn't sit
+  // on top of page content at the right edge.
+  @media (min-width: 992px) {
+    body:has(&) {
+      padding-right: 6.5rem;
+    }
+  }
+
   &::before {
     content: "";
     position: absolute;
@@ -132,46 +140,77 @@ $sta-duotone-gradient: linear-gradient(135deg, $sta-primary, $sta-accent-gold);
 
 .chapter-dot {
   position: relative;
-  display: block;
-  width: 10px;
-  height: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
   border-radius: 50%;
-  background: rgba(128, 128, 128, 0.15);
-  border: 2px solid rgba(128, 128, 128, 0.4);
-  transition: transform 0.25s ease, background-color 0.25s ease, border-color 0.25s ease;
+  background: rgba(128, 128, 128, 0.12);
+  border: 2px solid rgba(128, 128, 128, 0.35);
+  color: rgba(128, 128, 128, 0.75);
+  font-size: 0.8rem;
+  transition: transform 0.25s ease, background-color 0.25s ease, border-color 0.25s ease,
+    color 0.25s ease;
 
   &:hover,
   &:focus-visible {
     border-color: $sta-primary;
+    color: $sta-primary;
   }
 
   &.is-active {
-    background-color: $sta-primary;
-    border-color: $sta-primary;
-    transform: scale(1.35);
+    background: $sta-duotone-gradient;
+    border-color: transparent;
+    color: #1a1025;
+    transform: scale(1.15);
+    box-shadow: 0 0 0 4px rgba($sta-primary, 0.18);
+
+    @media (prefers-reduced-motion: no-preference) {
+      animation: chapter-dot-highlight 0.6s ease-out;
+    }
+  }
+}
+
+@keyframes chapter-dot-highlight {
+  0% {
+    box-shadow: 0 0 0 0 rgba($sta-primary, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 0 4px rgba($sta-primary, 0.18);
   }
 }
 
 .chapter-dot-label {
   position: absolute;
-  right: 1.4rem;
+  right: 2.6rem;
   top: 50%;
   transform: translateY(-50%) translateX(8px);
   white-space: nowrap;
-  font-size: 0.75rem;
-  padding: 0.2rem 0.55rem;
-  border-radius: 0.25rem;
-  background: rgba(0, 0, 0, 0.7);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.3rem 0.7rem;
+  border-radius: 0.3rem;
+  background: rgba(0, 0, 0, 0.75);
   color: #fff;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
 .chapter-dot:hover .chapter-dot-label,
 .chapter-dot:focus-visible .chapter-dot-label {
   opacity: 1;
   transform: translateY(-50%) translateX(0);
+}
+
+// The active section's name shows itself automatically (highlighted in
+// the dual-tone gradient) - no need to hover just to know where you are.
+.chapter-dot.is-active .chapter-dot-label {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+  background: $sta-duotone-gradient;
+  color: #1a1025;
 }
 
 // ------------------------------------------------------------------
@@ -371,8 +410,11 @@ $sta-duotone-gradient: linear-gradient(135deg, $sta-primary, $sta-accent-gold);
   }
 
   @media (prefers-reduced-motion: no-preference) {
+    // Short, not the old one-shot 1.4s - this now tracks scroll position
+    // directly (custom_js.html), so a long transition would just make
+    // it visibly lag behind the scroll instead of following it.
     path.is-ready {
-      transition: stroke-dashoffset 1.4s ease-out;
+      transition: stroke-dashoffset 0.12s linear;
     }
   }
 }
@@ -625,6 +667,9 @@ $sta-duotone-gradient: linear-gradient(135deg, $sta-primary, $sta-accent-gold);
   }
 
   form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem 1.25rem;
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba($sta-primary, 0.25);
     border-radius: 1.25rem;
@@ -635,6 +680,64 @@ $sta-duotone-gradient: linear-gradient(135deg, $sta-primary, $sta-accent-gold);
     &:focus-within {
       border-color: rgba($sta-primary, 0.5);
       box-shadow: 0 1rem 2.5rem rgba($sta-primary, 0.12);
+    }
+
+    // Name | Email side by side; Message | reCAPTCHA side by side below;
+    // Send button on its own row, right-aligned.
+    .form-group:nth-of-type(1) {
+      grid-column: 1;
+      margin-bottom: 0;
+    }
+
+    .form-group:nth-of-type(2) {
+      grid-column: 2;
+      margin-bottom: 0;
+    }
+
+    .form-group:nth-of-type(3) {
+      grid-column: 1;
+      margin-bottom: 0;
+    }
+
+    // reCAPTCHA's iframe has a fixed intrinsic size; scaling it down is
+    // the standard trick since there's no official "small" API option
+    // available through the theme's auto-injected widget.
+    [data-netlify-recaptcha] {
+      grid-column: 2;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      transform: scale(0.82);
+      transform-origin: center bottom;
+    }
+
+    button[type="submit"] {
+      grid-column: 1 / -1;
+      justify-self: end;
+      width: auto !important;
+      min-width: 11rem;
+    }
+
+    @media (max-width: 575.98px) {
+      grid-template-columns: 1fr;
+
+      .form-group:nth-of-type(1),
+      .form-group:nth-of-type(2),
+      .form-group:nth-of-type(3) {
+        grid-column: 1;
+      }
+
+      [data-netlify-recaptcha] {
+        grid-column: 1;
+        justify-content: flex-start;
+        transform: scale(0.82);
+        transform-origin: left bottom;
+      }
+
+      button[type="submit"] {
+        justify-self: stretch;
+        width: 100% !important;
+      }
     }
   }
 
@@ -652,22 +755,61 @@ $sta-duotone-gradient: linear-gradient(135deg, $sta-primary, $sta-accent-gold);
     }
   }
 
+  // "Sending" hover animation: a paper plane loops up and off, then
+  // re-enters from the opposite corner - reads like mail being sent
+  // rather than a plain static icon.
   button[type="submit"] {
     position: relative;
     overflow: hidden;
+    padding-right: 2.75rem;
     background: $sta-duotone-gradient;
     background-size: 200% 100%;
     background-position: left center;
     border: none;
     transition: background-position 0.5s ease, transform 0.15s ease;
 
+    &::after {
+      font-family: "Font Awesome 5 Free";
+      font-weight: 900;
+      content: "\f1d8";
+      position: absolute;
+      right: 1.1rem;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
     &:hover {
       background-position: right center;
+
+      @media (prefers-reduced-motion: no-preference) {
+        &::after {
+          animation: send-fly 0.9s ease-in-out infinite;
+        }
+      }
     }
 
     &:active {
       transform: scale(0.98);
     }
+  }
+}
+
+@keyframes send-fly {
+  0% {
+    transform: translate(0, -50%);
+    opacity: 1;
+  }
+  45% {
+    transform: translate(0.9rem, -170%);
+    opacity: 0;
+  }
+  46% {
+    transform: translate(-0.9rem, 70%);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0, -50%);
+    opacity: 1;
   }
 }
 
@@ -689,6 +831,19 @@ $sta-duotone-gradient: linear-gradient(135deg, $sta-primary, $sta-accent-gold);
 
   .card:hover .card-image img {
     transform: scale(1.08);
+  }
+
+  // Same border-glow the timeline/accomplishments cards get, on top of
+  // the image zoom above, so every card type on the site feels like one
+  // consistent design system rather than several different treatments.
+  .card {
+    border: 1px solid transparent;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  }
+
+  .card:hover {
+    border-color: rgba($sta-primary, 0.5);
+    box-shadow: 0 0.85rem 1.85rem rgba($sta-primary, 0.22);
   }
 
   .card-image.hover-overlay::before {

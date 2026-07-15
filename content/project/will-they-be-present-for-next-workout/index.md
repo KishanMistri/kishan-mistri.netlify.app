@@ -1,7 +1,7 @@
 ---
-title: Will they be present for Next workout?
+title: Will They Be Present for Next Workout?
 date: 2022-10-26T08:13:00.000Z
-summary: Predicting the attendance rate for each fitness classes.
+summary: Predicting the attendance rate for each fitness class.
 draft: false
 featured: false
 tags:
