@@ -18,8 +18,8 @@ marketing:
     site_type: Person
     local_business_type: ''
     org_name: ''
-    description: ''
-    twitter: 'wowchemy'
+    description: 'Kishan Mistri — Senior DevOps Engineer specializing in cloud infrastructure, Kubernetes, and CI/CD automation, based in Bangalore, India.'
+    twitter: ''
   analytics:
     google_analytics: ''
     baidu_tongji: ''
@@ -70,7 +70,7 @@ features:
   privacy_pack:
     enable: false
   repository:
-    url: 'https://github.com/<username>/<repository>'
+    url: 'https://github.com/KishanMistri/kishan-mistri.netlify.app'
     content_dir: content
     branch: master
   avatar:
@@ -102,7 +102,7 @@ features:
 # Extensions
 
 extensions:
-  cms:
+  decap_cms:
     branch: master
     local_backend: false
   isotope:

@@ -1,5 +1,5 @@
 ---
-slides: example
+slides: ""
 url_pdf: ""
 date: 2017-07-17T12:00:00.000Z
 summary: Identify music classes from provided top 10 genres.

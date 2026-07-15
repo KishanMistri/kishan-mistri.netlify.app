@@ -13,7 +13,7 @@ tags:
 categories:
   - EDA
 image:
-  filename: https://media.sproutsocial.com/uploads/2021/03/11_Twitter_Trending_Topics-1.svg
+  filename: featured.png
   focal_point: Smart
   preview_only: false
 ---
@@ -23,7 +23,7 @@ image:
 <p>As any place filled with riches, Twitter has <em>security guards</em> blocking us from laying our hands on the data right away ⛔️ Some  authentication steps (really straightforward) are needed to call their APIs for data collection. Since our goal today is learning to extract insights from data, we have already gotten a green-pass from security ✅ Our data is ready for usage in the datasets folder — we can concentrate on the fun part! 🕵️‍♀️🌎
 <br>
 <br>
-<img src="https://assets.datacamp.com/production/project_760/img/tweets_influence.png" style="width: 300px">
+<img src="featured.png" style="width: 300px">
 <hr>
 <br>Twitter provides both global and local trends. Let's load and inspect data for topics that were hot worldwide (WW) and in the United States (US) at the moment of query  — snapshot of JSON response from the call to Twitter's <i>GET trends/place</i> API.</p>
 <p><i><b>Note</b>: <a href="https://developer.twitter.com/en/docs/trends/trends-for-location/api-reference/get-trends-place.html">Here</a> is the documentation for this call, and <a href="https://developer.twitter.com/en/docs/api-reference-index.html">here</a> a full overview on Twitter's APIs.</i></p>
@@ -323,7 +323,7 @@ print (len(common_trends), "common trends:", common_trends)
 <p>🕵️‍♀️ From the intersection (last output) we can see that, out of the two sets of trends (each of size 50), we have 11 overlapping topics. In particular, there is one common trend that sounds very interesting: <i><b>#WeLoveTheEarth</b></i> — so good to see that <em>Twitteratis</em> are unanimously talking about loving Mother Earth! 💚 </p>
 <p><i><b>Note</b>: We could have had no overlap or a much higher overlap; when we did the query for getting the trends, people in the US could have been on fire obout topics only relevant to them.</i>
 <br>
-<img src="https://assets.datacamp.com/production/project_760/img/earth.jpg" style="width: 500px"></p>
+<img src="earth.jpg" style="width: 500px"></p>
 <div style="text-align: center;"><i>Image Source:Official Music Video Cover: https://welovetheearth.org/video/</i></div>
 <hr>
 <p>We have found a hot-trend, #WeLoveTheEarth. Now let's see what story it is screaming to tell us! <br>
@@ -1017,7 +1017,7 @@ plt.hist(tweets_languages)
 <li>There were a lot of tweets with a language alien to Twitter (lang = 'und'). </li>
 </ul>
 <p>Why is this sort of information useful? Because it can allow us to get an understanding of the "category" of people interested in this topic (clustering). </p>
-<p><img src="https://assets.datacamp.com/production/project_760/img/languages_world_map.png" style="width: 500px"></p>
+<p><img src="languages-world-map.png" style="width: 500px"></p>
 <hr>
 <p><span style="color:#41859e">
 What an exciting journey it has been! We started almost clueless, and here we are.. rich in insights. </span></p>
@@ -1026,7 +1026,7 @@ From location based comparisons to analyzing the activity around a tweet to find
 </span>
 <br><br></p>
 <div style="text-align: center;color:#41859e"><b><i>Magic Formula = Data + Python + Creativity + Curiosity</i></b></div>
-<p><img src="https://assets.datacamp.com/production/project_760/img/finish_line.jpg" style="width: 500px"></p>
+<p><img src="finish-line.jpg" style="width: 500px"></p>
 
 <p><strong>"Does owning an Apple compared to Andorid influences people's propensity towards this trend?"</strong></p>
 <li>From the looks of the current tweet trends, we see more tweets from iPhone than Android.</li>

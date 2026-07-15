@@ -11,12 +11,12 @@ tags:
 categories:
   - EDA
 image:
-  filename: https://i0.wp.com/nabanitadhar.in/wp-content/uploads/2018/07/Something-in-the-water.jpg?fit=1000%2C667&ssl=1
+  filename: featured.jpg
   focal_point: Smart
   preview_only: true
 ---
 ## 1. Darwin's bibliography
-<p><img src="https://assets.datacamp.com/production/project_607/img/CharlesDarwin.jpg" alt="Charles Darwin" width="300px"></p>
+<p><img src="charles-darwin.jpg" alt="Charles Darwin" width="300px"></p>
 <p>Charles Darwin is one of the few universal figures of science. His most renowned work is without a doubt his "<em>On the Origin of Species</em>" published in 1859 which introduced the concept of natural selection. But Darwin wrote many other books on a wide range of topics, including geology, plants or his personal life. In this notebook, we will automatically detect how closely related his books are to each other.</p>
 <p>To this purpose, we will develop the bases of <strong>a content-based book recommendation system</strong>, which will determine which books are close to each other based on how similar the discussed topics are. The methods we will use are commonly used in text- or documents-heavy industries such as legal, tech or customer support to perform some common task such as text classification or handling search engine queries.</p>
 <p>Let's take a look at the books we'll use in our recommendation system.</p>

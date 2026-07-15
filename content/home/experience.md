@@ -23,7 +23,7 @@ date_format: Jan 2006
 #   Begin multi-line descriptions with YAML's `|2-` multi-line prefix.
 experience:
 
-  - title: DevOps Engineer
+  - title: Senior DevOps Engineer
     company: HDFC Securities
     company_url: 'https://www.hdfcsec.com/'
     company_logo: org-hdfcsec
@@ -31,6 +31,12 @@ experience:
     date_start: '2024-01-04'
     # date_end: '2027-02-21'
     description: |2-
+        Responsibilities include: <!-- TODO(Kishan): review/edit these bullets -->
+        * Own CI/CD pipeline design and infrastructure automation for trading & broking platforms, prioritizing reliability and low-latency delivery
+        * Manage Kubernetes-based infrastructure and Terraform-driven IaC across dev, QA, pre-prod & production environments
+        * Drive observability improvements - monitoring, alerting & dashboarding for critical financial systems
+        * Partner with security & compliance teams to meet financial-sector regulatory requirements
+        * Mentor engineers on DevOps best practices and automation tooling
     
   - title: Senior DevOps Engineer
     company: Zetapp (Previously known as Onecode)
