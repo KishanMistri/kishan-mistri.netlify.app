@@ -1,0 +1,238 @@
+// Override this file to add your own SCSS styling.
+
+// ------------------------------------------------------------------
+// Storytelling: scroll-reveal, timeline, and micro-interaction polish
+// Kept subtle on purpose - fades/slides only, no bounce or parallax.
+// ------------------------------------------------------------------
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  // Generic scroll-reveal, applied by custom_js.html to each home-section
+  // and to card/timeline children within it for a staggered entrance.
+  .reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+  }
+
+  .reveal-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  // Stagger direct card/timeline-row children once their section is revealed.
+  .home-section.is-visible .reveal-child {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reveal-child {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  @for $i from 1 through 12 {
+    .reveal-child:nth-child(#{$i}) {
+      transition-delay: #{$i * 0.08}s;
+    }
+  }
+
+  // Gentle hover lift for cards site-wide (projects, posts, experience).
+  .card {
+    transition: transform 0.25s ease-out, box-shadow 0.25s ease-out;
+  }
+
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.1);
+  }
+}
+
+// Career timeline (Experience widget): animated connecting line + a
+// pulsing marker on the current role. These are static/instant for
+// users who prefer reduced motion.
+.wg-experience {
+  .experience .border-right {
+    position: relative;
+    overflow: hidden;
+
+    @media (prefers-reduced-motion: no-preference) {
+      &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: currentColor;
+        transform: scaleY(0);
+        transform-origin: top;
+        transition: transform 0.9s ease-out;
+      }
+    }
+  }
+
+  .home-section.is-visible .experience .border-right::after {
+    transform: scaleY(1);
+  }
+
+  .badge.exp-fill {
+    background-color: $sta-primary;
+    border-color: $sta-primary !important;
+
+    @media (prefers-reduced-motion: no-preference) {
+      animation: exp-current-pulse 2.2s ease-in-out infinite;
+    }
+  }
+}
+
+@keyframes exp-current-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba($sta-primary, 0.35);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba($sta-primary, 0);
+  }
+}
+
+// Typewriter cursor for the profile role/tagline (About widget), text is
+// typed in via custom_js.html; this just styles the blinking caret.
+#profile h3:first-of-type.typewriter::after {
+  content: "|";
+  margin-left: 2px;
+  animation: typewriter-caret 0.8s step-end infinite;
+}
+
+@keyframes typewriter-caret {
+  50% {
+    opacity: 0;
+  }
+}
+
+// ------------------------------------------------------------------
+// Chapter navigation: a small fixed "map" of the homepage sections so
+// visitors can jump around non-linearly, built by custom_js.html.
+// Hidden on narrower viewports to avoid overlapping content.
+// ------------------------------------------------------------------
+.chapter-nav {
+  position: fixed;
+  top: 50%;
+  right: 1.5rem;
+  transform: translateY(-50%);
+  z-index: 1030;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+
+  @media (max-width: 991.98px) {
+    display: none;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 1px;
+    background: rgba(128, 128, 128, 0.25);
+    z-index: -1;
+  }
+}
+
+.chapter-dot {
+  position: relative;
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(128, 128, 128, 0.15);
+  border: 2px solid rgba(128, 128, 128, 0.4);
+  transition: transform 0.25s ease, background-color 0.25s ease, border-color 0.25s ease;
+
+  &:hover,
+  &:focus-visible {
+    border-color: $sta-primary;
+  }
+
+  &.is-active {
+    background-color: $sta-primary;
+    border-color: $sta-primary;
+    transform: scale(1.35);
+  }
+}
+
+.chapter-dot-label {
+  position: absolute;
+  right: 1.4rem;
+  top: 50%;
+  transform: translateY(-50%) translateX(8px);
+  white-space: nowrap;
+  font-size: 0.75rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: 0.25rem;
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.chapter-dot:hover .chapter-dot-label,
+.chapter-dot:focus-visible .chapter-dot-label {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+
+// ------------------------------------------------------------------
+// Brief branded intro (once per session, homepage only): a curtain that
+// always auto-dismisses on a timer or on click - it never gates on real
+// asset loading, so it can't get stuck the way heavier 3D intros can.
+// ------------------------------------------------------------------
+@media (prefers-reduced-motion: no-preference) {
+  .intro-veil {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: $sta-dark-background;
+    cursor: pointer;
+    transition: opacity 0.45s ease, visibility 0.45s ease;
+  }
+
+  .intro-veil--out {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .intro-veil-text {
+    text-align: center;
+    color: #fff;
+    font-family: $sta-font-heading;
+    font-size: 1.75rem;
+    letter-spacing: 0.04em;
+    opacity: 0;
+    transform: translateY(12px);
+    animation: intro-veil-in 0.6s ease-out 0.1s forwards;
+  }
+
+  .intro-veil-role {
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    opacity: 0.7;
+  }
+
+  @keyframes intro-veil-in {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
