@@ -1125,3 +1125,116 @@ ul.network-icon {
     background-size: 100% 2px;
   }
 }
+
+// ------------------------------------------------------------------
+// Ambient audio toggle: bottom-left (the chapter-nav owns the right
+// edge), muted/outline at rest, fills with the dual-tone gradient and
+// shows a tiny animated equalizer once playing. Sound is opt-in only -
+// this button is the single control for both the background pad and
+// click sound effects, and never starts anything on its own.
+// ------------------------------------------------------------------
+.ambient-audio-toggle {
+  position: fixed;
+  left: 1.5rem;
+  bottom: 1.5rem;
+  z-index: 1030;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 50%;
+  border: 2px solid rgba(128, 128, 128, 0.35);
+  background: rgba(20, 22, 34, 0.85);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.15rem;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+  transition: transform 0.25s ease, border-color 0.25s ease, background-color 0.3s ease,
+    box-shadow 0.3s ease;
+
+  &:hover {
+    border-color: $sta-primary;
+    transform: scale(1.08);
+  }
+
+  &--was-on:not(.is-playing) {
+    @media (prefers-reduced-motion: no-preference) {
+      animation: ambient-toggle-hint 2.4s ease-in-out infinite;
+    }
+  }
+
+  .ambient-audio-bars {
+    display: none;
+  }
+
+  &.is-playing {
+    border-color: transparent;
+    background: $sta-duotone-gradient;
+    color: #1a1025;
+    box-shadow: 0 0.5rem 1.4rem rgba($sta-primary, 0.35);
+
+    .fa-music {
+      display: none;
+    }
+
+    .ambient-audio-bars {
+      display: inline-flex;
+      align-items: flex-end;
+      gap: 3px;
+      height: 1.1rem;
+
+      i {
+        display: block;
+        width: 3px;
+        background: #1a1025;
+        border-radius: 2px;
+
+        @media (prefers-reduced-motion: no-preference) {
+          animation: ambient-bar-bounce 0.9s ease-in-out infinite;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          height: 60%;
+        }
+
+        &:nth-child(1) {
+          animation-delay: -0.6s;
+        }
+
+        &:nth-child(2) {
+          animation-delay: -0.3s;
+        }
+
+        &:nth-child(3) {
+          animation-delay: 0s;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 575.98px) {
+    left: 1rem;
+    bottom: 1rem;
+    width: 2.85rem;
+    height: 2.85rem;
+  }
+}
+
+@keyframes ambient-toggle-hint {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba($sta-primary, 0.35);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba($sta-primary, 0);
+  }
+}
+
+@keyframes ambient-bar-bounce {
+  0%, 100% {
+    height: 30%;
+  }
+  50% {
+    height: 100%;
+  }
+}
