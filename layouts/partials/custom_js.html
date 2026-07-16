@@ -575,11 +575,33 @@
       true
     );
 
-    // Remember the choice, but never auto-start playback on load - always
-    // wait for an explicit click, consistent with not surprising anyone
-    // with sound (and browsers would block an autoplay attempt anyway).
-    if (localStorage.getItem(STORAGE_KEY) === "1") {
+    // Ambience is on by default. Browsers block real audio before any user
+    // gesture though, so we can't start it on load itself - instead, arm a
+    // one-time listener that starts it on the visitor's very first
+    // click/tap/keypress anywhere on the page, and show a pulsing hint on
+    // the toggle in the meantime so it's clear sound is about to start.
+    // An explicit prior "off" choice via the toggle is respected and skips
+    // all of this.
+    var storedPref = localStorage.getItem(STORAGE_KEY);
+    var wantsAudio = storedPref === null ? "1" : storedPref;
+
+    if (wantsAudio === "1") {
       toggleButton.classList.add("ambient-audio-toggle--was-on");
+
+      var startOnFirstInteraction = function (e) {
+        if (e.target && e.target.closest && e.target.closest(".ambient-audio-toggle")) {
+          return; // the toggle's own click handler already covers this
+        }
+        document.removeEventListener("click", startOnFirstInteraction, true);
+        document.removeEventListener("keydown", startOnFirstInteraction, true);
+        document.removeEventListener("touchstart", startOnFirstInteraction, true);
+        if (!playing) {
+          setPlaying(true);
+        }
+      };
+      document.addEventListener("click", startOnFirstInteraction, true);
+      document.addEventListener("keydown", startOnFirstInteraction, true);
+      document.addEventListener("touchstart", startOnFirstInteraction, true);
     }
   })();
 })();
