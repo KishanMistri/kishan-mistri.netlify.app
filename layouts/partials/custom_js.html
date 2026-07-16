@@ -363,5 +363,246 @@
       }
     });
   }
+
+  // ------------------------------------------------------------------
+  // Ambient audio: a calming, synthesized lofi-style chord pad plus a
+  // soft click sound, both generated entirely via the Web Audio API -
+  // no external audio files, so no licensing question and no added
+  // page weight. Off by default: browsers already block audio from
+  // autoplaying without a user gesture, and unsolicited sound on page
+  // load is bad manners regardless of policy. A floating toggle starts
+  // and stops it; the choice is remembered (and re-offered, never
+  // auto-played) on the next visit.
+  // ------------------------------------------------------------------
+  (function initAmbientAudio() {
+    var STORAGE_KEY = "wc-ambient-audio-on";
+    var audioCtx = null;
+    var masterGain = null;
+    var noiseGain = null;
+    var playing = false;
+    var chordIndex = 0;
+    var chordTimer = null;
+    var activeNodes = [];
+
+    // A gentle vi-IV-I-V progression in C, voiced with 7th/9th
+    // extensions and kept in a low-mid register so it sits behind
+    // everything else rather than drawing attention.
+    var CHORDS = [
+      [220.0, 261.63, 329.63, 493.88], // Am9 (no 5th)
+      [174.61, 220.0, 261.63, 329.63], // Fmaj9
+      [130.81, 164.81, 196.0, 246.94], // Cmaj7
+      [196.0, 246.94, 293.66, 329.63], // G6/9
+    ];
+    var CHORD_DURATION = 7; // seconds each
+
+    function ensureContext() {
+      if (!audioCtx) {
+        var Ctx = window.AudioContext || window.webkitAudioContext;
+        if (!Ctx) {
+          return null;
+        }
+        audioCtx = new Ctx();
+        masterGain = audioCtx.createGain();
+        masterGain.gain.value = 0;
+        masterGain.connect(audioCtx.destination);
+      }
+      return audioCtx;
+    }
+
+    function makeNoiseBuffer(ctx) {
+      var length = ctx.sampleRate * 2;
+      var buffer = ctx.createBuffer(1, length, ctx.sampleRate);
+      var data = buffer.getChannelData(0);
+      var last = 0;
+      for (var i = 0; i < length; i++) {
+        var white = Math.random() * 2 - 1;
+        // Cheap brown-noise integration for a softer, warmer hiss than
+        // raw white noise - closer to vinyl/tape texture.
+        last = (last + 0.02 * white) / 1.02;
+        data[i] = last * 3.5;
+      }
+      return buffer;
+    }
+
+    function startNoiseBed(ctx) {
+      var noise = ctx.createBufferSource();
+      noise.buffer = makeNoiseBuffer(ctx);
+      noise.loop = true;
+      var filter = ctx.createBiquadFilter();
+      filter.type = "lowpass";
+      filter.frequency.value = 900;
+      noiseGain = ctx.createGain();
+      noiseGain.gain.value = 0.025;
+      noise.connect(filter);
+      filter.connect(noiseGain);
+      noiseGain.connect(masterGain);
+      noise.start();
+      activeNodes.push(noise);
+    }
+
+    function playChord(ctx, freqs) {
+      var now = ctx.currentTime;
+      var filter = ctx.createBiquadFilter();
+      filter.type = "lowpass";
+      filter.frequency.value = 1100;
+      filter.Q.value = 0.3;
+      filter.connect(masterGain);
+
+      // Slow LFO on the filter cutoff for a subtle "breathing" movement
+      // rather than a static, flat tone.
+      var lfo = ctx.createOscillator();
+      var lfoGain = ctx.createGain();
+      lfo.frequency.value = 0.06;
+      lfoGain.gain.value = 220;
+      lfo.connect(lfoGain);
+      lfoGain.connect(filter.frequency);
+      lfo.start(now);
+      lfo.stop(now + CHORD_DURATION + 1);
+      activeNodes.push(lfo);
+
+      freqs.forEach(function (freq, idx) {
+        var osc = ctx.createOscillator();
+        osc.type = idx === 0 ? "triangle" : "sine";
+        osc.frequency.value = freq;
+        // Slight per-voice detune keeps the pad from sounding sterile.
+        osc.detune.value = (Math.random() - 0.5) * 6;
+
+        var voiceGain = ctx.createGain();
+        var peak = 0.05;
+        voiceGain.gain.setValueAtTime(0, now);
+        voiceGain.gain.linearRampToValueAtTime(peak, now + 1.5);
+        voiceGain.gain.setValueAtTime(peak, now + CHORD_DURATION - 1.5);
+        voiceGain.gain.linearRampToValueAtTime(0, now + CHORD_DURATION);
+
+        osc.connect(voiceGain);
+        voiceGain.connect(filter);
+        osc.start(now);
+        osc.stop(now + CHORD_DURATION + 0.1);
+        activeNodes.push(osc);
+      });
+    }
+
+    function scheduleChords(ctx) {
+      playChord(ctx, CHORDS[chordIndex % CHORDS.length]);
+      chordIndex++;
+      chordTimer = setTimeout(function () {
+        if (playing) {
+          scheduleChords(ctx);
+        }
+      }, CHORD_DURATION * 1000 * 0.92); // slight overlap for a smoother crossfade
+    }
+
+    function stopAll() {
+      activeNodes.forEach(function (node) {
+        try {
+          node.stop();
+        } catch (e) {
+          // already stopped - fine to ignore
+        }
+      });
+      activeNodes = [];
+      clearTimeout(chordTimer);
+    }
+
+    function playClick() {
+      if (!playing || !audioCtx) {
+        return;
+      }
+      var now = audioCtx.currentTime;
+      var osc = audioCtx.createOscillator();
+      var gain = audioCtx.createGain();
+      osc.type = "sine";
+      osc.frequency.setValueAtTime(880, now);
+      osc.frequency.exponentialRampToValueAtTime(420, now + 0.08);
+      gain.gain.setValueAtTime(0.06, now);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.09);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start(now);
+      osc.stop(now + 0.1);
+    }
+
+    function setPlaying(next) {
+      var ctx = ensureContext();
+      if (!ctx) {
+        return;
+      }
+      playing = next;
+      localStorage.setItem(STORAGE_KEY, playing ? "1" : "0");
+      toggleButton.classList.toggle("is-playing", playing);
+      toggleButton.setAttribute("aria-pressed", String(playing));
+
+      if (playing) {
+        if (ctx.state === "suspended") {
+          ctx.resume();
+        }
+        masterGain.gain.cancelScheduledValues(ctx.currentTime);
+        masterGain.gain.linearRampToValueAtTime(1, ctx.currentTime + 1.2);
+        startNoiseBed(ctx);
+        chordIndex = 0;
+        scheduleChords(ctx);
+      } else {
+        masterGain.gain.cancelScheduledValues(ctx.currentTime);
+        masterGain.gain.linearRampToValueAtTime(0, ctx.currentTime + 0.6);
+        setTimeout(stopAll, 700);
+      }
+    }
+
+    // Floating toggle, styled to match the site's dual-tone system.
+    var toggleButton = document.createElement("button");
+    toggleButton.type = "button";
+    toggleButton.className = "ambient-audio-toggle";
+    toggleButton.setAttribute("aria-label", "Toggle background ambience");
+    toggleButton.setAttribute("aria-pressed", "false");
+    toggleButton.innerHTML =
+      '<i class="fas fa-music" aria-hidden="true"></i>' +
+      '<span class="ambient-audio-bars" aria-hidden="true"><i></i><i></i><i></i></span>';
+    document.body.appendChild(toggleButton);
+
+    toggleButton.addEventListener("click", function () {
+      setPlaying(!playing);
+    });
+
+    // Click sfx on interactive elements, but only once the user has
+    // actually opted into sound - never plays on its own.
+    document.addEventListener(
+      "click",
+      function (e) {
+        if (e.target.closest("a, button") && e.target.closest(".ambient-audio-toggle") === null) {
+          playClick();
+        }
+      },
+      true
+    );
+
+    // Ambience is on by default. Browsers block real audio before any user
+    // gesture though, so we can't start it on load itself - instead, arm a
+    // one-time listener that starts it on the visitor's very first
+    // click/tap/keypress anywhere on the page, and show a pulsing hint on
+    // the toggle in the meantime so it's clear sound is about to start.
+    // An explicit prior "off" choice via the toggle is respected and skips
+    // all of this.
+    var storedPref = localStorage.getItem(STORAGE_KEY);
+    var wantsAudio = storedPref === null ? "1" : storedPref;
+
+    if (wantsAudio === "1") {
+      toggleButton.classList.add("ambient-audio-toggle--was-on");
+
+      var startOnFirstInteraction = function (e) {
+        if (e.target && e.target.closest && e.target.closest(".ambient-audio-toggle")) {
+          return; // the toggle's own click handler already covers this
+        }
+        document.removeEventListener("click", startOnFirstInteraction, true);
+        document.removeEventListener("keydown", startOnFirstInteraction, true);
+        document.removeEventListener("touchstart", startOnFirstInteraction, true);
+        if (!playing) {
+          setPlaying(true);
+        }
+      };
+      document.addEventListener("click", startOnFirstInteraction, true);
+      document.addEventListener("keydown", startOnFirstInteraction, true);
+      document.addEventListener("touchstart", startOnFirstInteraction, true);
+    }
+  })();
 })();
 </script>
